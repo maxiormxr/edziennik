@@ -1,0 +1,253 @@
+#oceny
+{
+    	display: block;
+	width: 186px;
+    height: 60px;
+	text-decoration: none;
+	background-image: url("Images/tla/tlo.jpg");
+	color: #000;
+	padding: 5px;
+	border: 4px outset #ccc;
+    font-family: Lucida Console;
+    text-align: center; 
+    vertical-align:middle;
+    display:table-cell;
+    text-shadow: 2px;
+    min-width:190px; 
+}
+#container
+{
+    margin:5px;
+    border: 2px;
+    padding:2px;
+    
+}
+#content{
+    border:1px dashed;
+}
+#pole{
+width: 100%;
+    height: 150px;
+    background-image:url(Images/tla/tlopodtekst.png);
+   }
+
+@media screen and (min-width: 900px)
+ {
+    body{
+    background:url("Images/tla/tlostrony.jpg");
+}
+
+#logo{
+   
+   max-width: 15%;
+   height:auto;
+   width:auto;
+ 
+}    
+#wyloguj
+{
+ 
+    padding: 6px;
+    float:right;
+    
+    margin-right:10px;
+}
+#menu{
+     width:20%;
+float:left;
+    
+}
+#male{
+    visibility:hidden;
+    width: 0%;
+    float:left;
+}
+
+#aktualnosci
+{
+    margin: 40px;
+    border:2px ;
+    padding: 6px;
+    background-image:url(Images/tla/tlopodtekst.png);
+     width:60%;
+     float:left;
+   
+}
+
+ul, ul li {
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul a:link, ul a:visited {
+	display: block;
+	width: 186px;
+    height: 60px;
+	text-decoration: none;
+	background-image: url("Images/tla/tlo.jpg");
+	color: #000;
+	padding: 5px;
+	border: 4px outset #ccc;
+    font-family: Lucida Console;
+    text-align: center; 
+    vertical-align:middle;
+    display:table-cell;
+    text-shadow: 2px;
+    min-width:190px;       
+     
+}
+
+ul a:hover {
+	border-style: inset;
+	padding: 7px 3px 3px 7px;
+}
+  
+}
+
+@media screen and (max-width: 899px){
+ body{
+        background:url("Images/tla/tlostrony.jpg");
+       
+        }
+#logo{
+   
+   max-width: 15%;
+   height:auto;
+   width:auto;
+ 
+}  
+#wyloguj a:link, ul a:visited {
+    margin:10px;
+	text-decoration: none;
+	background:#FDD700;
+	color: #000;
+	padding: 5px;
+    font-family: Lucida Console;
+    text-align: center; 
+    display:table-cell;
+
+   
+}
+#wyloguj a:hover {
+    background-color: #EEE;
+}
+
+#menu{
+      visibility:hidden;
+      width:0%;
+      float:left;
+}
+#male{
+     width:20%;
+    float:left;
+     z-index: 2;
+    position:relative;
+   
+}
+#aktualnosci
+{
+   
+    margin: 30px;
+    background-image:url(Images/tla/tlopodtekst.png);
+ 
+     float:left;
+       z-index: 1;
+     position: absolute;
+    
+}
+
+
+ol {
+  list-style-type:none;
+  padding:0;
+  margin:0;
+  font-size:18px;
+  height:2em;
+  line-height:2em;
+  text-align:center;
+  
+ 
+
+}
+
+ol > li {
+  background-color:#FDD700;
+  min-width:190px; 
+}
+
+ol a {
+  display:block;
+  color:#000;
+  text-decoration:none;
+  padding:0 5px;
+}
+ol > li > a:hover {
+  color:#09C;
+}
+
+ol > li:hover {
+  background-color:#EEE;
+}
+ol > li > ul {
+  list-style-type:none;
+  padding:0;
+  margin:0;
+}
+
+ol > li {
+ 
+  background-color:#FDD700;
+  width:150px;
+  margin-left:1px;
+}
+
+ol > li:first-child {
+  margin-left:0;
+}
+ol > li > ul > li > a {
+  border-top:1px solid #FFF;
+}
+
+ol {
+  background-color:#FFF;
+}
+
+ol > li > ul > li {
+  background-color:#EEE;
+}
+
+ol > li > ul > li:hover {
+  background-color:#DDD;
+}
+
+ol > li > ul > li:hover a {
+  color:#09C;
+}
+
+ol > li > ul {
+  display:none;
+}
+
+ol > li:hover > ul {
+  display:block;
+}
+
+ol > li {
+  float:left;
+  background-color:#FDD700;
+  width:150px;
+  margin-left:1px;
+  height:2em;
+}
+
+ol > li:hover > a {
+  color:#09C;
+}
+
+
+
+
+
+}
