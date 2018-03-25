@@ -35,8 +35,8 @@ function dodaj(pole){
     </script>
 
 <?php
-echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['login'] . '</span>';	
-echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie_ucznia'] . '</span>';
+
+echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie_ucznia'] . ' Uczen </span>';
 
 
 ?>
@@ -84,9 +84,9 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie_ucznia'] . '</spa
 
 <input  type="submit" value="dodaj"/>
 </div>
-
-
-    
+<?php
+echo '<span style="color: #FFFFF0;">  ' . $_SESSION['tekst'] . '</span>';
+    ?>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dapibus nibh risus, a malesuada nulla porta sed. Maecenas viverra suscipit augue, vitae efficitur massa pulvinar a. Duis laoreet neque nec ornare laoreet. Integer vel enim commodo, tempor massa in, vestibulum purus. Vivamus ultrices ante et tempor fringilla. Ut at venenatis sapien. Sed varius pharetra risus, pharetra egestas tellus sagittis quis.
         Etiam pellentesque porta mi sit amet vulputate. Curabitur venenatis arcu mi, non porta lorem suscipit nec. Mauris quis hendrerit diam. Aenean volutpat sollicitudin tellus, quis pharetra justo tempor eu. Nam in enim id risus tincidunt efficitur. Ut odio mi, ullamcorper quis nisl ut, egestas mollis lacus. Duis vel vulputate quam. In vehicula vel dui vitae accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla porttitor eu augue vel eleifend. Nulla et sodales erat. Praesent est sem, viverra in quam porta, mollis feugiat nisi.
         Phasellus aliquet sagittis tortor in finibus. Curabitur pulvinar condimentum varius. Curabitur bibendum dolor ac magna tempus sagittis. Vestibulum pharetra elit dapibus, cursus sem in, dapibus felis. Phasellus hendrerit, orci ac tempor accumsan, enim nibh venenatis urna, ut cursus sapien nibh vel nibh. Fusce maximus interdum mauris et porta. Nullam ultrices velit urna, id egestas tortor elementum vitae. Mauris quis lectus at dolor fringilla porttitor lacinia ut ante. Donec ullamcorper nec enim ac sodales. Cras tincidunt mi nec gravida gravida. Donec mollis dui nunc, consectetur elementum mauris interdum non. Quisque faucibus dapibus turpis at tincidunt. Phasellus aliquam posuere urna, sit amet vehicula massa luctus ac. Etiam ut orci turpis. Nullam velit tortor, suscipit sit amet ex eu, convallis viverra nisl.
