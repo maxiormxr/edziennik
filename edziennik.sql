@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 24 Mar 2018, 14:24
+-- Czas generowania: 25 Mar 2018, 14:23
 -- Wersja serwera: 10.1.30-MariaDB
 -- Wersja PHP: 7.2.2
 
@@ -30,10 +30,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `aktualnosci` (
   `id_aktualnosci` int(11) NOT NULL,
-  `id_ucznia` int(11) NOT NULL,
-  `id_nauczyciela` int(11) NOT NULL,
-  `tekst` text COLLATE utf8_polish_ci NOT NULL
+  `id_ucznia` int(11) DEFAULT NULL,
+  `id_nauczyciela` int(11) DEFAULT NULL,
+  `tekst` text COLLATE utf8_polish_ci NOT NULL,
+  `imie` varchar(25) COLLATE utf8_polish_ci NOT NULL,
+  `nazwisko` varchar(25) COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `aktualnosci`
+--
+
+INSERT INTO `aktualnosci` (`id_aktualnosci`, `id_ucznia`, `id_nauczyciela`, `tekst`, `imie`, `nazwisko`) VALUES
+(1, 1, NULL, '', '', ''),
+(2, 1, NULL, '', '', ''),
+(3, NULL, NULL, 'asdf', '', ''),
+(4, 1, NULL, '', '', ''),
+(5, NULL, NULL, 'sadd', '', '');
 
 -- --------------------------------------------------------
 
@@ -43,8 +56,8 @@ CREATE TABLE `aktualnosci` (
 
 CREATE TABLE `nauczyciele` (
   `id_nauczyciela` int(11) NOT NULL,
-  `imie` varchar(25) COLLATE utf8_polish_ci NOT NULL,
-  `nazwisko` varchar(25) COLLATE utf8_polish_ci NOT NULL,
+  `imie_nauczyciela` varchar(25) COLLATE utf8_polish_ci NOT NULL,
+  `nazwisko_nauczyciela` varchar(25) COLLATE utf8_polish_ci NOT NULL,
   `pesel` varchar(11) COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
@@ -52,7 +65,7 @@ CREATE TABLE `nauczyciele` (
 -- Zrzut danych tabeli `nauczyciele`
 --
 
-INSERT INTO `nauczyciele` (`id_nauczyciela`, `imie`, `nazwisko`, `pesel`) VALUES
+INSERT INTO `nauczyciele` (`id_nauczyciela`, `imie_nauczyciela`, `nazwisko_nauczyciela`, `pesel`) VALUES
 (1, 'Lukasz', 'Szorc', '12345678911');
 
 -- --------------------------------------------------------
@@ -77,7 +90,7 @@ CREATE TABLE `oceny` (
 CREATE TABLE `uczniowie` (
   `id_ucznia` int(11) NOT NULL,
   `imie_ucznia` varchar(25) COLLATE utf8_polish_ci NOT NULL,
-  `nazwisko` varchar(25) COLLATE utf8_polish_ci NOT NULL,
+  `nazwisko_ucznia` varchar(25) COLLATE utf8_polish_ci NOT NULL,
   `pesel` varchar(11) COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
@@ -85,7 +98,7 @@ CREATE TABLE `uczniowie` (
 -- Zrzut danych tabeli `uczniowie`
 --
 
-INSERT INTO `uczniowie` (`id_ucznia`, `imie_ucznia`, `nazwisko`, `pesel`) VALUES
+INSERT INTO `uczniowie` (`id_ucznia`, `imie_ucznia`, `nazwisko_ucznia`, `pesel`) VALUES
 (1, 'Patryk', 'Kurowski', '93062402853');
 
 -- --------------------------------------------------------
@@ -118,7 +131,9 @@ INSERT INTO `uzytkownicy` (`id_uzytkownika`, `login`, `haslo`, `id_ucznia`, `id_
 -- Indeksy dla tabeli `aktualnosci`
 --
 ALTER TABLE `aktualnosci`
-  ADD PRIMARY KEY (`id_aktualnosci`);
+  ADD PRIMARY KEY (`id_aktualnosci`),
+  ADD KEY `id_ucznia` (`id_ucznia`),
+  ADD KEY `id_nauczyciela` (`id_nauczyciela`);
 
 --
 -- Indeksy dla tabeli `nauczyciele`
@@ -154,7 +169,7 @@ ALTER TABLE `uzytkownicy`
 -- AUTO_INCREMENT dla tabeli `aktualnosci`
 --
 ALTER TABLE `aktualnosci`
-  MODIFY `id_aktualnosci` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_aktualnosci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `nauczyciele`
@@ -183,6 +198,12 @@ ALTER TABLE `uzytkownicy`
 --
 -- Ograniczenia dla zrzutów tabel
 --
+
+--
+-- Ograniczenia dla tabeli `aktualnosci`
+--
+ALTER TABLE `aktualnosci`
+  ADD CONSTRAINT `aktualnosci_ibfk_1` FOREIGN KEY (`id_ucznia`) REFERENCES `uczniowie` (`id_ucznia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograniczenia dla tabeli `uzytkownicy`
