@@ -17,10 +17,14 @@
 	
         
 	
-     $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND id_ucznia='1'";
-     $sql2 = "SELECT uczniowie.imie_ucznia, uczniowie.nazwisko
+     $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND id_nauczyciela IS NULL";
+     $sql2 = "SELECT uczniowie.imie_ucznia, uczniowie.nazwisko_ucznia
 				FROM uczniowie
 				INNER JOIN uzytkownicy ON uczniowie.id_ucznia = uzytkownicy.id_ucznia";
+                
+    $sql3 = "SELECT tekst FROM aktualnosci order by id";
+    
+       
        
 			$wykonaj = $polaczenie->query($sql2);
       
@@ -35,7 +39,10 @@
                 
 				$wiersz2 = $wykonaj->fetch_assoc();
 				$_SESSION['imie_ucznia']=$wiersz2['imie_ucznia'];
-
+                
+                $wykonaj1 = $polaczenie->query($sql3);
+                $wiersz3= $wykonaj1->fetch_assoc();
+                	$_SESSION['tekst']=$wiersz3['tekst'];
 				
                 $rezultat->close();
                 header('Location:aktualnosci_ucznia.php');
@@ -49,8 +56,9 @@
         
         }
         
-        $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND id_nauczyciela='1'";
-				$sql2 = "SELECT nauczyciele.imie, nauczyciele.nazwisko
+        $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND id_ucznia IS NULL";
+        
+				$sql2 = "SELECT nauczyciele.imie_nauczyciela, nauczyciele.nazwisko_nauczyciela
 				FROM nauczyciele
 				INNER JOIN uzytkownicy ON nauczyciele.id_nauczyciela = uzytkownicy.id_nauczyciela";
        
@@ -62,8 +70,9 @@
             {
                 $wiersz = $rezultat->fetch_assoc();
                 $_SESSION['login']=$wiersz['login'];
+                
             	$wiersz2 = $wykonaj->fetch_assoc();
-				$_SESSION['imie']=$wiersz2['imie'];
+				$_SESSION['imie_nauczyciela']=$wiersz2['imie_nauczyciela'];
                 
 
 				
