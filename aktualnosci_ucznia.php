@@ -77,10 +77,10 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie_ucznia'] . ' Ucze
         </ol>
     </div>
 
-
+<div id="aktualnosci">
 <div id="d1" class="kolumna">
 <form action="dodaj.php" method="post">
-<br/>treœæ <textarea name="tekst" rows="20" cols="50"></textarea>
+<br/><textarea name="tekst" rows="10" cols="80"></textarea>
 
 <input  type="submit" value="dodaj"/>
 </div>
