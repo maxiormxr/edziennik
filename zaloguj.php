@@ -18,7 +18,7 @@
         
 	
      $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND id_ucznia='1'";
-     $sql2 = "SELECT uczniowie.imie_ucznia, uczniowie.nazwisko
+     $sql2 = "SELECT uczniowie.imie_ucznia, uczniowie.nazwisko_ucznia
 				FROM uczniowie
 				INNER JOIN uzytkownicy ON uczniowie.id_ucznia = uzytkownicy.id_ucznia";
        
@@ -50,7 +50,7 @@
         }
         
         $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND id_nauczyciela='1'";
-				$sql2 = "SELECT nauczyciele.imie, nauczyciele.nazwisko
+				$sql2 = "SELECT nauczyciele.imie, nauczyciele.nazwisko_nauczyciela
 				FROM nauczyciele
 				INNER JOIN uzytkownicy ON nauczyciele.id_nauczyciela = uzytkownicy.id_nauczyciela";
        
