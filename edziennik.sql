@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 25 Mar 2018, 14:23
+-- Czas generowania: 25 Mar 2018, 16:25
 -- Wersja serwera: 10.1.30-MariaDB
 -- Wersja PHP: 7.2.2
 
@@ -46,7 +46,12 @@ INSERT INTO `aktualnosci` (`id_aktualnosci`, `id_ucznia`, `id_nauczyciela`, `tek
 (2, 1, NULL, '', '', ''),
 (3, NULL, NULL, 'asdf', '', ''),
 (4, 1, NULL, '', '', ''),
-(5, NULL, NULL, 'sadd', '', '');
+(5, NULL, NULL, 'sadd', '', ''),
+(6, 1, NULL, '', '', ''),
+(7, NULL, NULL, 'asf', '', ''),
+(8, 1, NULL, '', '', ''),
+(9, 1, NULL, '', '', ''),
+(10, NULL, NULL, 'dzvzdf', '', '');
 
 -- --------------------------------------------------------
 
@@ -99,7 +104,8 @@ CREATE TABLE `uczniowie` (
 --
 
 INSERT INTO `uczniowie` (`id_ucznia`, `imie_ucznia`, `nazwisko_ucznia`, `pesel`) VALUES
-(1, 'Patryk', 'Kurowski', '93062402853');
+(1, 'Patryk', 'Kurowski', '93062402853'),
+(2, 'Mateusz', 'Lech', '11987654321');
 
 -- --------------------------------------------------------
 
@@ -121,7 +127,8 @@ CREATE TABLE `uzytkownicy` (
 
 INSERT INTO `uzytkownicy` (`id_uzytkownika`, `login`, `haslo`, `id_ucznia`, `id_nauczyciela`) VALUES
 (1, 'pat', 'qaz', 1, NULL),
-(4, 'Luk', 'qaz', NULL, 1);
+(4, 'Luk', 'qaz', NULL, 1),
+(5, 'mat', 'qaz', 2, NULL);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -169,7 +176,7 @@ ALTER TABLE `uzytkownicy`
 -- AUTO_INCREMENT dla tabeli `aktualnosci`
 --
 ALTER TABLE `aktualnosci`
-  MODIFY `id_aktualnosci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_aktualnosci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT dla tabeli `nauczyciele`
@@ -187,13 +194,13 @@ ALTER TABLE `oceny`
 -- AUTO_INCREMENT dla tabeli `uczniowie`
 --
 ALTER TABLE `uczniowie`
-  MODIFY `id_ucznia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_ucznia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT dla tabeli `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
-  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ograniczenia dla zrzutów tabel
