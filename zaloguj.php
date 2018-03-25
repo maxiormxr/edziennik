@@ -18,9 +18,11 @@
         
 	
      $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND id_nauczyciela IS NULL";
-     $sql2 = "SELECT uczniowie.imie_ucznia, uczniowie.nazwisko_ucznia
+     $sql2 = "SELECT uczniowie.imie_ucznia, uczniowie.nazwisko_ucznia, uzytkownicy.login
 				FROM uczniowie
-				INNER JOIN uzytkownicy ON uczniowie.id_ucznia = uzytkownicy.id_ucznia";
+                
+				INNER JOIN uzytkownicy ON uczniowie.id_ucznia = uzytkownicy.id_ucznia
+                WHERE login='$login'";
                 
     $sql3 = "SELECT tekst FROM aktualnosci order by id";
     
@@ -40,9 +42,9 @@
 				$wiersz2 = $wykonaj->fetch_assoc();
 				$_SESSION['imie_ucznia']=$wiersz2['imie_ucznia'];
                 
-                $wykonaj1 = $polaczenie->query($sql3);
-                $wiersz3= $wykonaj1->fetch_assoc();
-                	$_SESSION['tekst']=$wiersz3['tekst'];
+                //$wykonaj1 = $polaczenie->query($sql3);
+               // $wiersz3= $wykonaj1->fetch_assoc();
+                //	$_SESSION['tekst']=$wiersz3['tekst'];
 				
                 $rezultat->close();
                 header('Location:aktualnosci_ucznia.php');
