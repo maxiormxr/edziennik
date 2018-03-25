@@ -12,4 +12,6 @@ Instrukcja jak zacząć z korzystać z github.com oraz GitHub Desktop na potrzeb
 
 Zasady pracy nad projektem:
   1. Utwórz nowy branch, nazwij go swoją nazwą użytkownika github.com i opublikuj w repozytorium github.com aby móc dodawać pull requesty (strzeż się przed pracą bezpośrednio na masterze :| )
-  2. Reszta zasad do ustalenia jak już w miarę wszyscy zrozumiemy i nauczymy się korzystać z dobrodziejstw tegoż systemu kontroli wersji :)
+  2. Gdy już uporałeś się ze swoim zadaniem i masz poprawkę błędu, bądź nową funkcjonalność aplikacji, wykonaj commit, w którym krótko opiszesz co takiego zrobiłeś
+  3. Kolejnym twoim krokiem w rozwój projektu jest pull request z twojego branch'a do mastera - po zatwierdzeniu twoich zmian przez resztę zespołu ;)
+  4. Reszta zasad do ustalenia jak już w miarę wszyscy zrozumiemy i nauczymy się korzystać z dobrodziejstw tegoż systemu kontroli wersji :)
