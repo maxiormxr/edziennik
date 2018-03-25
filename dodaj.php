@@ -15,11 +15,29 @@ session_start();
    
     
         
-        $tekst = $_POST['tekst'];       
+
+		
+		$uzytkownik = $_SESSION['imie_ucznia'];
+		$sql_dane_ucznia = "SELECT uzytkownicy.id_ucznia, imie_ucznia, nazwisko_ucznia FROM uczniowie
+			INNER JOIN uzytkownicy ON uczniowie.id_ucznia = uzytkownicy.id_ucznia WHERE uczniowie.imie_ucznia = '$uzytkownik'";
       
+
+		$wykonaj = $polaczenie->query($sql_dane_ucznia);
+		if (!$wykonaj) {
+			throw new Exception("Database Error [{$polaczenie->errno}] {$polaczenie->error}");
+		}
+		
+		$dane_ucznia = $wykonaj->fetch_assoc();
+				var_dump($wykonaj);
         
-        $sql3 = "INSERT INTO aktualnosci (tekst) VALUES ('$tekst')" or die(mysql_error());
+		$tekst = $_POST['tekst']; 
+                $sql3 = "INSERT INTO aktualnosci (id_ucznia, tekst) VALUES ('$dane_ucznia[id_ucznia]','$tekst')";
+
+		//$sql3 = "INSERT INTO aktualnosci (id_ucznia, tekst) VALUES ('$dane_ucznia[id_ucznia],'$tekst')";
         $wykonaj = $polaczenie->query($sql3); 
+		if (!$wykonaj) {
+			throw new Exception("Database Error [{$polaczenie->errno}] {$polaczenie->error}");
+		}
   
      
               
