@@ -93,6 +93,22 @@
      // $wykonaj = $polaczenie->query($zapytanie);
      //   header('Location:aktualnosci_ucznia.php');
            
+            $sql11 = "SELECT  oceny.ocena, uczniowie.imie_ucznia, uczniowie.nazwisko_ucznia, przedmioty.nazwa
+FROM   uczniowie 
+       LEFT OUTER JOIN oceny ON uczniowie.id_ucznia=oceny.id_ucznia 
+       INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu";
+                
+                  $rezultat =@$polaczenie->query($sql11);
+        
+         
+                
+            	$wiersz2 = $rezultat->fetch_assoc();
+				$_SESSION['nazwisko_ucznia']=$wiersz2['nazwisko_ucznia'];
+                $_SESSION['ocena']=$wiersz2['ocena'];
+                $_SESSION['nazwa']=$wiersz2['nazwa'];
+
+                
+                
 	$polaczenie->close();
     }
 ?>
