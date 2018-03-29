@@ -36,7 +36,7 @@ function dodaj(pole){
 
 <?php
 
-echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie_ucznia'] . ' Uczen </span>';
+echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Uczen </span>';
 
 
 ?>

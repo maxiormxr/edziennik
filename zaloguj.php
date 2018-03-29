@@ -16,13 +16,12 @@
 		$haslo = $_POST['haslo'];
 	
         
-	
-     $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND id_nauczyciela IS NULL";
-     $sql2 = "SELECT uczniowie.imie_ucznia, uczniowie.nazwisko_ucznia, uzytkownicy.login
-				FROM uczniowie
-                
-				INNER JOIN uzytkownicy ON uczniowie.id_ucznia = uzytkownicy.id_ucznia
-                WHERE login='$login'";
+
+     $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND rola=1";
+     $sql2 = "SELECT daneuzytkownika.imie, daneuzytkownika.nazwisko, uzytkownicy.login 
+     FROM daneuzytkownika 
+     INNER JOIN uzytkownicy ON uzytkownicy.id_uzytkownika = daneuzytkownika.id_uzytkownika
+     WHERE login='$login'";
                 
   
        
@@ -38,7 +37,7 @@
 
                 
 				$wiersz2 = $wykonaj->fetch_assoc();
-				$_SESSION['imie_ucznia']=$wiersz2['imie_ucznia'];
+				$_SESSION['imie']=$wiersz2['imie'];
                 
              
 				
@@ -54,11 +53,12 @@
         
         }
         
-        $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND id_ucznia IS NULL";
+        $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND rola=2";
         
-				$sql2 = "SELECT nauczyciele.imie_nauczyciela, nauczyciele.nazwisko_nauczyciela
-				FROM nauczyciele
-				INNER JOIN uzytkownicy ON nauczyciele.id_nauczyciela = uzytkownicy.id_nauczyciela";
+				$sql2 = "SELECT daneuzytkownika.imie, daneuzytkownika.nazwisko, uzytkownicy.login 
+     FROM daneuzytkownika 
+     INNER JOIN uzytkownicy ON uzytkownicy.id_uzytkownika = daneuzytkownika.id_uzytkownika
+     WHERE login='$login'";
        
 				$wykonaj = $polaczenie->query($sql2);	    
         if($rezultat =@$polaczenie->query($sql))
@@ -70,7 +70,7 @@
                 $_SESSION['login']=$wiersz['login'];
                 
             	$wiersz2 = $wykonaj->fetch_assoc();
-				$_SESSION['imie_nauczyciela']=$wiersz2['imie_nauczyciela'];
+				$_SESSION['imie']=$wiersz2['imie'];
                 
 
 				
@@ -94,7 +94,7 @@
      //   header('Location:aktualnosci_ucznia.php');
            
             $sql11 = "SELECT  oceny.ocena, uczniowie.imie_ucznia, uczniowie.nazwisko_ucznia, przedmioty.nazwa
-FROM   uczniowie 
+        FROM   uczniowie 
        LEFT OUTER JOIN oceny ON uczniowie.id_ucznia=oceny.id_ucznia 
        INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu";
                 
@@ -102,11 +102,11 @@ FROM   uczniowie
         
          
                 
-            	$wiersz2 = $rezultat->fetch_assoc();
-				$_SESSION['nazwisko_ucznia']=$wiersz2['nazwisko_ucznia'];
-                $_SESSION['ocena']=$wiersz2['ocena'];
-                $_SESSION['nazwa']=$wiersz2['nazwa'];
-
+            //	$wiersz2 = $rezultat->fetch_assoc();
+			//	$_SESSION['nazwisko_ucznia']=$wiersz2['nazwisko_ucznia'];
+             //   $_SESSION['ocena']=$wiersz2['ocena'];
+             //   $_SESSION['nazwa']=$wiersz2['nazwa'];
+//
                 
                 
 	$polaczenie->close();
