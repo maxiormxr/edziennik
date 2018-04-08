@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 08 Kwi 2018, 22:48
+-- Czas generowania: 08 Kwi 2018, 23:02
 -- Wersja serwera: 10.1.31-MariaDB
 -- Wersja PHP: 7.2.3
 
@@ -111,10 +111,6 @@ CREATE TABLE `uzytkownicy` (
   `id_uzytkownika` int(11) NOT NULL,
   `login` varchar(30) COLLATE utf8_polish_ci NOT NULL,
   `haslo` varchar(20) COLLATE utf8_polish_ci NOT NULL,
-  `Imie` text COLLATE utf8_polish_ci NOT NULL,
-  `Nazwisko` text COLLATE utf8_polish_ci NOT NULL,
-  `adres` text COLLATE utf8_polish_ci NOT NULL,
-  `telefon` int(11) NOT NULL,
   `Rola` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
@@ -122,9 +118,9 @@ CREATE TABLE `uzytkownicy` (
 -- Zrzut danych tabeli `uzytkownicy`
 --
 
-INSERT INTO `uzytkownicy` (`id_uzytkownika`, `login`, `haslo`, `Imie`, `Nazwisko`, `adres`, `telefon`, `Rola`) VALUES
-(1, 'pat', 'qaz', '', '', '', 0, 0),
-(5, 'mat', 'qaz', '', '', '', 0, 0);
+INSERT INTO `uzytkownicy` (`id_uzytkownika`, `login`, `haslo`, `Rola`) VALUES
+(1, 'pat', 'qaz', 0),
+(5, 'mat', 'qaz', 0);
 
 --
 -- Indeksy dla zrzutów tabel
