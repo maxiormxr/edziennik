@@ -85,27 +85,25 @@
         
         
         }
-        	// $sql2 = "SELECT uczniowie.imie_ucznia, uczniowie.nazwisko
-            // FROM uczniowie
-            // INNER JOIN uzytkownicy ON uczniowie.id_ucznia= uzytkownicy.id_ucznia";
+        	 //$sql2 = "SELECT daneuzytkownika.imie, daneuzytkownika.nazwisko
+            // FROM daneuzytkownika
+           //  INNER JOIN uzytkownicy ON daneuzytkownika.id_uzytkownika= uzytkownicy.id_uzytkownika";
        
-       $wykonaj = $polaczenie->query($sql2);
-     // $wykonaj = $polaczenie->query($zapytanie);
-     //   header('Location:aktualnosci_ucznia.php');
+      // $wykonaj = $polaczenie->query($sql2);
+      //$wykonaj = $polaczenie->query($zapytanie);
+        //header('Location:aktualnosci_ucznia.php');
            
-            $sql11 = "SELECT  oceny.ocena, uczniowie.imie_ucznia, uczniowie.nazwisko_ucznia, przedmioty.nazwa
-        FROM   uczniowie 
-       LEFT OUTER JOIN oceny ON uczniowie.id_ucznia=oceny.id_ucznia 
-       INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu";
+            $sql11 = "SELECT  oceny.ocena, daneuzytkownika.imie, daneuzytkownika.nazwisko, przedmioty.nazwa
+                    FROM   daneuzytkownika
+                    LEFT OUTER JOIN oceny ON daneuzytkownika.id_uzytkownika=oceny.id_uzytkownika 
+                    INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu";
                 
                   $rezultat =@$polaczenie->query($sql11);
-        
-         
                 
-            //	$wiersz2 = $rezultat->fetch_assoc();
-			//	$_SESSION['nazwisko_ucznia']=$wiersz2['nazwisko_ucznia'];
-             //   $_SESSION['ocena']=$wiersz2['ocena'];
-             //   $_SESSION['nazwa']=$wiersz2['nazwa'];
+            	$wiersz2 = $rezultat->fetch_assoc();
+				$_SESSION['nazwisko']=$wiersz2['nazwisko'];
+               $_SESSION['ocena']=$wiersz2['ocena'];
+                $_SESSION['nazwa']=$wiersz2['nazwa'];
 //
                 
                 
