@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 08 Kwi 2018, 23:02
+-- Czas generowania: 09 Kwi 2018, 10:21
 -- Wersja serwera: 10.1.31-MariaDB
 -- Wersja PHP: 7.2.3
 
@@ -33,24 +33,24 @@ CREATE TABLE `aktualnosci` (
   `tekst` text COLLATE utf8_polish_ci NOT NULL,
   `imie` varchar(25) COLLATE utf8_polish_ci NOT NULL,
   `nazwisko` varchar(25) COLLATE utf8_polish_ci NOT NULL,
-  `Id_uzytkownika` int(11) NOT NULL
+  `id_uzytkownika` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+-- --------------------------------------------------------
+
 --
--- Zrzut danych tabeli `aktualnosci`
+-- Struktura tabeli dla tabeli `daneuzytkownika`
 --
 
-INSERT INTO `aktualnosci` (`id_aktualnosci`, `tekst`, `imie`, `nazwisko`, `Id_uzytkownika`) VALUES
-(1, '', '', '', 0),
-(2, '', '', '', 0),
-(3, 'asdf', '', '', 0),
-(4, '', '', '', 0),
-(5, 'sadd', '', '', 0),
-(6, '', '', '', 0),
-(7, 'asf', '', '', 0),
-(8, '', '', '', 0),
-(9, '', '', '', 0),
-(10, 'dzvzdf', '', '', 0);
+CREATE TABLE `daneuzytkownika` (
+  `id_uzytkownika` int(11) NOT NULL,
+  `imie` varchar(25) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `nazwisko` varchar(25) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `adress` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `nrdomu` varchar(10) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `miasto` varchar(25) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `pesel` varchar(11) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -70,10 +70,11 @@ CREATE TABLE `klasa` (
 --
 
 CREATE TABLE `nauczyciele_klasa_przedmiot` (
-  `id_naucz_klasa_przedmioti` int(11) NOT NULL,
-  `id_nauczyciela` int(11) DEFAULT NULL,
-  `id_klasy` int(11) DEFAULT NULL,
-  `id_przedmiotu` int(11) DEFAULT NULL
+  `id_klasa` int(11) NOT NULL,
+  `id_użytkownika` int(11) DEFAULT NULL,
+  `id_przedmiotu` int(11) DEFAULT NULL,
+  `id_oceny` int(11) NOT NULL,
+  `id_klasy` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -86,7 +87,7 @@ CREATE TABLE `oceny` (
   `id_oceny` int(11) NOT NULL,
   `id_przemiotu` int(11) NOT NULL,
   `ocena` int(11) NOT NULL,
-  `Id_uzytkownika` int(11) NOT NULL,
+  `id_uzytkownika` int(11) NOT NULL,
   `waga` text COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
@@ -130,13 +131,45 @@ INSERT INTO `uzytkownicy` (`id_uzytkownika`, `login`, `haslo`, `Rola`) VALUES
 -- Indeksy dla tabeli `aktualnosci`
 --
 ALTER TABLE `aktualnosci`
-  ADD PRIMARY KEY (`id_aktualnosci`);
+  ADD PRIMARY KEY (`id_aktualnosci`),
+  ADD KEY `Id_uzytkownika` (`id_uzytkownika`);
+
+--
+-- Indeksy dla tabeli `daneuzytkownika`
+--
+ALTER TABLE `daneuzytkownika`
+  ADD PRIMARY KEY (`id_uzytkownika`),
+  ADD KEY `id_uzytkownika` (`id_uzytkownika`);
+
+--
+-- Indeksy dla tabeli `klasa`
+--
+ALTER TABLE `klasa`
+  ADD PRIMARY KEY (`id_klasy`);
+
+--
+-- Indeksy dla tabeli `nauczyciele_klasa_przedmiot`
+--
+ALTER TABLE `nauczyciele_klasa_przedmiot`
+  ADD PRIMARY KEY (`id_klasa`),
+  ADD KEY `id_klasy` (`id_klasy`),
+  ADD KEY `id_użytkownika` (`id_użytkownika`,`id_przedmiotu`,`id_oceny`),
+  ADD KEY `id_oceny` (`id_oceny`),
+  ADD KEY `id_przedmiotu` (`id_przedmiotu`);
 
 --
 -- Indeksy dla tabeli `oceny`
 --
 ALTER TABLE `oceny`
-  ADD PRIMARY KEY (`id_oceny`);
+  ADD PRIMARY KEY (`id_oceny`),
+  ADD KEY `id_przemiotu` (`id_przemiotu`),
+  ADD KEY `id_uzytkownika` (`id_uzytkownika`);
+
+--
+-- Indeksy dla tabeli `przedmioty`
+--
+ALTER TABLE `przedmioty`
+  ADD PRIMARY KEY (`id_przedmiotu`);
 
 --
 -- Indeksy dla tabeli `uzytkownicy`
@@ -165,6 +198,38 @@ ALTER TABLE `oceny`
 --
 ALTER TABLE `uzytkownicy`
   MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Ograniczenia dla zrzutów tabel
+--
+
+--
+-- Ograniczenia dla tabeli `aktualnosci`
+--
+ALTER TABLE `aktualnosci`
+  ADD CONSTRAINT `aktualnosci_ibfk_1` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownicy` (`id_uzytkownika`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograniczenia dla tabeli `daneuzytkownika`
+--
+ALTER TABLE `daneuzytkownika`
+  ADD CONSTRAINT `daneuzytkownika_ibfk_1` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownicy` (`id_uzytkownika`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograniczenia dla tabeli `nauczyciele_klasa_przedmiot`
+--
+ALTER TABLE `nauczyciele_klasa_przedmiot`
+  ADD CONSTRAINT `nauczyciele_klasa_przedmiot_ibfk_1` FOREIGN KEY (`id_klasy`) REFERENCES `klasa` (`id_klasy`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `nauczyciele_klasa_przedmiot_ibfk_2` FOREIGN KEY (`id_oceny`) REFERENCES `oceny` (`id_oceny`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `nauczyciele_klasa_przedmiot_ibfk_3` FOREIGN KEY (`id_przedmiotu`) REFERENCES `przedmioty` (`id_przedmiotu`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `nauczyciele_klasa_przedmiot_ibfk_4` FOREIGN KEY (`id_użytkownika`) REFERENCES `uzytkownicy` (`id_uzytkownika`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograniczenia dla tabeli `oceny`
+--
+ALTER TABLE `oceny`
+  ADD CONSTRAINT `oceny_ibfk_1` FOREIGN KEY (`id_przemiotu`) REFERENCES `przedmioty` (`id_przedmiotu`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `oceny_ibfk_2` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownicy` (`id_uzytkownika`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
