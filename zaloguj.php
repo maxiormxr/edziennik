@@ -96,14 +96,25 @@
             $sql11 = "SELECT  oceny.ocena, daneuzytkownika.imie, daneuzytkownika.nazwisko, przedmioty.nazwa
                     FROM   daneuzytkownika
                     LEFT OUTER JOIN oceny ON daneuzytkownika.id_uzytkownika=oceny.id_uzytkownika 
-                    INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu";
+                    INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu
+                    WHERE id_przemiotu=1";
                 
                   $rezultat =@$polaczenie->query($sql11);
-                
-            	$wiersz2 = $rezultat->fetch_assoc();
+                  	$wiersz2 = $rezultat->fetch_assoc();
 				$_SESSION['nazwisko']=$wiersz2['nazwisko'];
                $_SESSION['ocena']=$wiersz2['ocena'];
                 $_SESSION['nazwa']=$wiersz2['nazwa'];
+
+
+                 $sql111 = "SELECT  oceny.ocena, daneuzytkownika.imie, daneuzytkownika.nazwisko, przedmioty.nazwa
+                    FROM   daneuzytkownika
+                    LEFT OUTER JOIN oceny ON daneuzytkownika.id_uzytkownika=oceny.id_uzytkownika 
+                    INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu
+                    WHERE id_przemiotu=2";
+                    $rezultat =@$polaczenie->query($sql111);
+                    
+            
+                      $_SESSION['nazwa2']=$wiersz2['nazwa2'];
 //
                 
                 

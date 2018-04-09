@@ -76,8 +76,9 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Uczen </spa
                
             </tr>
             <tr>
-                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['nazwa'] . ' </span>'; ?> </td>
+                <td><?php echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwa'] . ' </span>'; ?> </td>
                 <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['ocena'] . ' </span>'; ?> </td>
+                <td><?php echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwa2'] . ' </span>'; ?> </td>
                
             </tr>
           
