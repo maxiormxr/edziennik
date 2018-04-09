@@ -70,18 +70,20 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Uczen </spa
             <table>
             
             <tr class="header">
-          
-                  <td>Przedmiot </td>
-                <td>Ocena </td>
+                <td>Imie</td>
+                <td>Nazwisko</td>
+                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['nazwa'] . ' </span>'; ?> </td>
                
             </tr>
             <tr>
-                <td><?php echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwa'] . ' </span>'; ?> </td>
-                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['ocena'] . ' </span>'; ?> </td>
-                <td><?php echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwa2'] . ' </span>'; ?> </td>
-               
+                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['imie'] . ' </span>'; ?> </td>
+                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['nazwisko'] . ' </span>'; ?> </td>
+               <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['ocena'] . ' </span>'; ?> </td>
             </tr>
-          
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
             
             </table>
     </div>  
