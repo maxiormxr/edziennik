@@ -5,6 +5,6 @@ $db_password="";
 $db_name="edziennik";
 
 
- v  
+
 
 ?>
