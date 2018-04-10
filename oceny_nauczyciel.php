@@ -25,7 +25,7 @@ session_start();
 
 <?php
 
-echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Uczen </span>';
+echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Nauczyciel </span>';
 
 
 ?>
