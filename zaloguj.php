@@ -38,7 +38,7 @@
                 
 				$wiersz2 = $wykonaj->fetch_assoc();
 				$_SESSION['imie']=$wiersz2['imie'];
-                
+                $_SESSION['nazwisko']=$wiersz2['nazwisko'];
              
 				
                 $rezultat->close();
@@ -71,7 +71,7 @@
                 
             	$wiersz2 = $wykonaj->fetch_assoc();
 				$_SESSION['imie']=$wiersz2['imie'];
-                
+                 $_SESSION['nazwisko']=$wiersz2['nazwisko'];
 
 				
                 $rezultat->close();
@@ -85,39 +85,52 @@
         
         
         }
-        	 //$sql2 = "SELECT daneuzytkownika.imie, daneuzytkownika.nazwisko
-            // FROM daneuzytkownika
-           //  INNER JOIN uzytkownicy ON daneuzytkownika.id_uzytkownika= uzytkownicy.id_uzytkownika";
-       
-      // $wykonaj = $polaczenie->query($sql2);
-      //$wykonaj = $polaczenie->query($zapytanie);
-        //header('Location:aktualnosci_ucznia.php');
-           
-            $sql11 = "SELECT  oceny.ocena, daneuzytkownika.imie, daneuzytkownika.nazwisko, przedmioty.nazwa
-                    FROM   daneuzytkownika
-                    LEFT OUTER JOIN oceny ON daneuzytkownika.id_uzytkownika=oceny.id_uzytkownika 
-                    INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu
-                    WHERE id_przemiotu=1";
+        
                 
-                  $rezultat =@$polaczenie->query($sql11);
-                  	$wiersz2 = $rezultat->fetch_assoc();
-				$_SESSION['nazwisko']=$wiersz2['nazwisko'];
-               $_SESSION['ocena']=$wiersz2['ocena'];
-                $_SESSION['nazwa']=$wiersz2['nazwa'];
+              
+ 
 
-
-                 $sql111 = "SELECT  oceny.ocena, daneuzytkownika.imie, daneuzytkownika.nazwisko, przedmioty.nazwa
-                    FROM   daneuzytkownika
+ 
+if ($polaczenie->connect_errno!=0)
+{
+    echo "Error: ".$polaczenie->connect_errno;
+}
+else
+{
+     
+    $sql = "SELECT  oceny.ocena, daneuzytkownika.imie, daneuzytkownika.nazwisko, przedmioty.nazwa
+                   FROM   daneuzytkownika
                     LEFT OUTER JOIN oceny ON daneuzytkownika.id_uzytkownika=oceny.id_uzytkownika 
-                    INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu
-                    WHERE id_przemiotu=2";
-                    $rezultat =@$polaczenie->query($sql111);
-                    
-            
-                      $_SESSION['nazwa2']=$wiersz2['nazwa2'];
-//
-                
-                
-	$polaczenie->close();
+                INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu 
+                WHERE daneuzytkownika.imie = 'patryk' AND daneuzytkownika.nazwisko = 'kurowski'";                ;
+ 
+   
+              
+           $result = $polaczenie->query($sql);
+
+        if ($result->num_rows > 0) {
+      while($row = $result->fetch_assoc()) {
+
+	$_SESSION['ocena']=$row['ocena'];
+    $_SESSION['nazwa']=$row['nazwa'];
+       // echo '<span style="color: #FFFFF0;">  ' . $row["ocena"] . '  </span>'; 
+       // echo '<span style="color: #FFFFF0;">  ' . $row["nazwa"] . ' </span>'; 
     }
+}
+  
+           // $wiersz = $rezultat->fetch_array();
+             
+            $id = $wiersz[3];     
+             
+            $rezultat->free_result();                
+        
+    
+         echo $id;
+    
+     }
+    $polaczenie->close();
+
+}
+ 
 ?>
+

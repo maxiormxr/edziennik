@@ -67,19 +67,58 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Uczen </spa
     </div>
 
     <div id="aktualnosci">
-            <table>
-            
-            <tr class="header">
-          
-                  <td>Przedmiot </td>
-                <td>Ocena </td>
-               
-            </tr>
-            <tr>
-                <td><?php echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwa'] . ' </span>'; ?> </td>
-                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['ocena'] . ' </span>'; ?> </td>
-                <td><?php echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwa2'] . ' </span>'; ?> </td>
-               
+        
+              
+    <?php
+ 
+require_once "connect.php";
+ 
+$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+ 
+if ($polaczenie->connect_errno!=0)
+{
+    echo "Error: ".$polaczenie->connect_errno;
+}
+else
+{
+     
+    $sql = "SELECT  oceny.ocena, daneuzytkownika.imie, daneuzytkownika.nazwisko, przedmioty.nazwa
+                   FROM   daneuzytkownika
+                    LEFT OUTER JOIN oceny ON daneuzytkownika.id_uzytkownika=oceny.id_uzytkownika 
+                INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu
+                WHERE daneuzytkownika.imie = 'patryk' AND daneuzytkownika.nazwisko = 'kurowski'";
+ 
+   
+              
+           $result = $polaczenie->query($sql);
+
+        if ($result->num_rows > 0) {
+           //echo "<tr><td>Przemiot </td><td> Ocena </td>";
+      while($row = $result->fetch_assoc()) {
+
+        echo "<table>
+        
+        <tr><td>" . $row["nazwa"] . "</td><td>" . $row["ocena"] . "
+        </table>";
+         
+    }
+}
+  
+           // $wiersz = $rezultat->fetch_array();
+             
+            $id = $wiersz[3];     
+             
+            $rezultat->free_result();                
+        
+    
+         echo $id;
+    
+     
+    $polaczenie->close();
+}
+ 
+?>
+
             </tr>
           
             
