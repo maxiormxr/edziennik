@@ -67,25 +67,71 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Nauczyciel 
     </div>
 
     <div id="aktualnosci">
-            <table>
-            
-            <tr class="header">
-                <td>Imie</td>
-                <td>Nazwisko</td>
-                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['nazwa'] . ' </span>'; ?> </td>
-               
-            </tr>
-            <tr>
-                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['imie'] . ' </span>'; ?> </td>
-                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['nazwisko'] . ' </span>'; ?> </td>
-               <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['ocena'] . ' </span>'; ?> </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            
-            </table>
+           
+             <?php
+ 
+require_once "connect.php";
+ 
+$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+ 
+if ($polaczenie->connect_errno!=0)
+{
+    echo "Error: ".$polaczenie->connect_errno;
+}
+else
+{
+    
+    $wyb_klase = "SELECT nazwa
+                FROM klasa";
+                
+           $result = $polaczenie->query($wyb_klase);
+
+        if ($result->num_rows > 0) {
+           //echo "<tr><td>Przemiot </td><td> Ocena </td>";
+      while($row = $result->fetch_assoc()) {
+
+        echo "<table>
+        
+        
+        <tr><td>" . $row["nazwa"] ."
+        </table>";
+         
+    }
+}
+           
+
+
+                
+     
+    $sql = "SELECT  oceny.ocena, daneuzytkownika.imie, daneuzytkownika.nazwisko, przedmioty.nazwa
+                   FROM   daneuzytkownika
+                    LEFT OUTER JOIN oceny ON daneuzytkownika.id_uzytkownika=oceny.id_uzytkownika 
+                INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu
+                WHERE id_przedmiotu=1";
+ 
+   
+              
+           $result = $polaczenie->query($sql);
+
+        if ($result->num_rows > 0) {
+           //echo "<tr><td>Przemiot </td><td> Ocena </td>";
+      while($row = $result->fetch_assoc()) {
+
+        echo "<table>
+        
+        <tr><td>" . $row["nazwisko"] . "</td><td>" . $row["ocena"] . "
+        </table>";
+         
+    }
+}
+  
+    
+     
+    $polaczenie->close();
+}
+ 
+?>
+      
     </div>  
 
     </div>
