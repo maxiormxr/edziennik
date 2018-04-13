@@ -67,7 +67,20 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Nauczyciel 
     </div>
 
     <div id="aktualnosci">
-           
+        Wybierz klase
+<form action="oceny_nauczyciel.php" method="post" id="formularz">
+<select name="nazwa" onchange="document.getElementById('formularz').submit();" >
+ 
+        <option >wybierz</option>
+        <option value='1A'>1A</option>
+        <option value='1B'>1B</option>
+
+ 
+    </select>
+
+</form>
+
+
              <?php
  
 require_once "connect.php";
@@ -81,56 +94,54 @@ if ($polaczenie->connect_errno!=0)
 else
 {
     
-    $wyb_klase = "SELECT nazwa
-                FROM klasa";
+    
+    
+    
+
+      
+      
+
+
+
+    if($nazwa=$_POST['nazwa'])
+    {
+       
+    }
+
+       (isset($_POST['nazwa'])) ? $nazwa=$_POST['nazwa'] : $nazwa='nie dokonano wyboru';
+       echo "Twoj wybor to: " .$nazwa;
+    
+    
+  
+      $wyb_klase = "SELECT oceny.ocena, klasa.nazwa, daneuzytkownika.nazwisko, przedmioty.nazwa
+                FROM klasa
+                INNER JOIN oceny ON klasa.id_klasy=oceny.id_klasy
+                INNER JOIN daneuzytkownika ON daneuzytkownika.id_uzytkownika=oceny.id_uzytkownika
+                INNER JOIN przedmioty ON przedmioty.id_przedmiotu=oceny.id_przemiotu
+                WHERE klasa.nazwa='$nazwa'";
                 
            $result = $polaczenie->query($wyb_klase);
-
-        if ($result->num_rows > 0) {
+           if ($result->num_rows > 0) {
            //echo "<tr><td>Przemiot </td><td> Ocena </td>";
       while($row = $result->fetch_assoc()) {
 
         echo "<table>
         
         
-        <tr><td>" . $row["nazwa"] ."
+        <tr><td>" . $row["ocena"] . "</td><td>" . $row["nazwisko"] . " </td><td>" . $row["nazwa"] . "
         </table>";
          
     }
 }
-           
 
-
-                
-     
-    $sql = "SELECT  oceny.ocena, daneuzytkownika.imie, daneuzytkownika.nazwisko, przedmioty.nazwa
-                   FROM   daneuzytkownika
-                    LEFT OUTER JOIN oceny ON daneuzytkownika.id_uzytkownika=oceny.id_uzytkownika 
-                INNER JOIN przedmioty ON oceny.id_przemiotu=przedmioty.id_przedmiotu
-                WHERE id_przedmiotu=1";
- 
-   
-              
-           $result = $polaczenie->query($sql);
-
-        if ($result->num_rows > 0) {
-           //echo "<tr><td>Przemiot </td><td> Ocena </td>";
-      while($row = $result->fetch_assoc()) {
-
-        echo "<table>
-        
-        <tr><td>" . $row["nazwisko"] . "</td><td>" . $row["ocena"] . "
-        </table>";
-         
-    }
-}
-  
     
+
      
     $polaczenie->close();
 }
  
 ?>
+
       
     </div>  
 
