@@ -106,7 +106,7 @@ else
       ";
       
       //$zrob = $polaczenie->query($spr_naucz);
-//var_dump($zrob);
+var_dump($_SESSION['login']);
 
 
     
