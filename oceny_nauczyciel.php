@@ -67,25 +67,85 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Nauczyciel 
     </div>
 
     <div id="aktualnosci">
-            <table>
-            
-            <tr class="header">
-                <td>Imie</td>
-                <td>Nazwisko</td>
-                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['nazwa'] . ' </span>'; ?> </td>
-               
-            </tr>
-            <tr>
-                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['imie'] . ' </span>'; ?> </td>
-                <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['nazwisko'] . ' </span>'; ?> </td>
-               <td><?php echo '<span style="color: #FFFFF0;"> ' . $_SESSION['ocena'] . ' </span>'; ?> </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            
-            </table>
+        Wybierz klase
+<form action="oceny_nauczyciel.php" method="post" id="formularz">
+<select name="nazwa" onchange="document.getElementById('formularz').submit();" >
+ 
+        <option >wybierz</option>
+        <option value='1A'>1A</option>
+        <option value='1B'>1B</option>
+
+ 
+    </select>
+
+</form>
+
+
+             <?php
+ 
+require_once "connect.php";
+ 
+$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+ 
+if ($polaczenie->connect_errno!=0)
+{
+    echo "Error: ".$polaczenie->connect_errno;
+}
+else
+{
+    
+    
+    
+    
+
+      $spr_naucz = "SELECT przedmioty.id_przedmiotu, przedmioty.nazwa, nauczyciele_klasa_przedmiot.id_u¿ytkownika, daneuzytkownika.nazwisko, uzytkownicy.login
+                    FROM nauczyciele_klasa_przedmiot
+                    INNER JOIN przedmioty ON nauczyciele_klasa_przedmiot.id_przedmiotu=przedmioty.id_przedmiotu
+                    INNER JOIN daneuzytkownika ON nauczyciele_klasa_przedmiot.id_u¿ytkownika=daneuzytkownika.id_uzytkownika
+                    INNER JOIN uzytkownicy ON nauczyciele_klasa_przedmiot.id_u¿ytkownika=uzytkownicy.id_uzytkownika
+      ";
+      
+      //$zrob = $polaczenie->query($spr_naucz);
+//var_dump($zrob);
+
+
+    
+
+       (isset($_POST['nazwa'])) ? $nazwa=$_POST['nazwa'] : $nazwa='nie dokonano wyboru';
+       echo "Twoj wybor to: " .$nazwa;
+    
+    
+  
+      $wyb_klase = "SELECT oceny.ocena, klasa.nazwa, daneuzytkownika.nazwisko, przedmioty.nazwa
+                FROM klasa
+                INNER JOIN oceny ON klasa.id_klasy=oceny.id_klasy
+                INNER JOIN daneuzytkownika ON daneuzytkownika.id_uzytkownika=oceny.id_uzytkownika
+                INNER JOIN przedmioty ON przedmioty.id_przedmiotu=oceny.id_przemiotu
+                WHERE klasa.nazwa='$nazwa'";
+                
+           $result = $polaczenie->query($wyb_klase);
+           if ($result->num_rows > 0) {
+           //echo "<tr><td>Przemiot </td><td> Ocena </td>";
+      while($row = $result->fetch_assoc()) {
+
+        echo "<table>
+        
+        
+        <tr><td>" . $row["ocena"] . "</td><td>" . $row["nazwisko"] . " </td><td>" . $row["nazwa"] . "
+        </table>";
+         
+    }
+}
+
+    
+
+     
+    $polaczenie->close();
+}
+ 
+?>
+
+      
     </div>  
 
     </div>

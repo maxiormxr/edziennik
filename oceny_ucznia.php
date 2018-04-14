@@ -98,20 +98,13 @@ else
 
         echo "<table>
         
+        
         <tr><td>" . $row["nazwa"] . "</td><td>" . $row["ocena"] . "
         </table>";
          
     }
 }
   
-           // $wiersz = $rezultat->fetch_array();
-             
-            $id = $wiersz[3];     
-             
-            $rezultat->free_result();                
-        
-    
-         echo $id;
     
      
     $polaczenie->close();
