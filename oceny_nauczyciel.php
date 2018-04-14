@@ -98,15 +98,18 @@ else
     
     
 
+      $spr_naucz = "SELECT przedmioty.id_przedmiotu, przedmioty.nazwa, nauczyciele_klasa_przedmiot.id_u¿ytkownika, daneuzytkownika.nazwisko, uzytkownicy.login
+                    FROM nauczyciele_klasa_przedmiot
+                    INNER JOIN przedmioty ON nauczyciele_klasa_przedmiot.id_przedmiotu=przedmioty.id_przedmiotu
+                    INNER JOIN daneuzytkownika ON nauczyciele_klasa_przedmiot.id_u¿ytkownika=daneuzytkownika.id_uzytkownika
+                    INNER JOIN uzytkownicy ON nauczyciele_klasa_przedmiot.id_u¿ytkownika=uzytkownicy.id_uzytkownika
+      ";
       
-      
+      //$zrob = $polaczenie->query($spr_naucz);
+//var_dump($zrob);
 
 
-
-    if($nazwa=$_POST['nazwa'])
-    {
-       
-    }
+    
 
        (isset($_POST['nazwa'])) ? $nazwa=$_POST['nazwa'] : $nazwa='nie dokonano wyboru';
        echo "Twoj wybor to: " .$nazwa;
