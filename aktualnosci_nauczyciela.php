@@ -58,7 +58,7 @@ echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwisko'] . ' Nauczyciel <
             <li><a href="kalendarz.php">KALENDARZ</a></li>
             <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
             <li><a href="profile.php">PROFILE</a></li>
-            <li><a href="plany.php">PLANY</a></li>
+            <li><a href="plany_nauczyciela.php">PLANY</a></li>
         </ul>
     </div>
 
@@ -66,13 +66,13 @@ echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwisko'] . ' Nauczyciel <
         <ol>
             <li><a >MENU</a>
                 <ul >
-                    <li><a href="aktualnosci.php">AKTUALNOŒCI</a></li>
-                    <li><a href="oceny.php">OCENY</a></li>
+                    <li><a href="aktualnosci_nauczyciela.php">AKTUALNOŒCI</a></li>
+                    <li><a href="oceny_nauczyciela.php">OCENY</a></li>
                     <li><a href="obecnosci.php">OBECNOŒCI</a></li>
                     <li><a href="kalendarz.php">KALENDARZ</a></li>
                     <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
                     <li><a href="profile.php">PROFILE</a></li>
-                    <li><a href="plany.php">PLANY</a></li>
+                    <li><a href="plany_nauczyciela.php">PLANY</a></li>
                 </ul>
             </li>
         </ol>

@@ -46,7 +46,7 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Nauczyciel 
             <li><a href="kalendarz.php">KALENDARZ</a></li>
             <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
             <li><a href="profile.php">PROFILE</a></li>
-            <li><a href="plany.php">PLANY</a></li>
+            <li><a href="plany_nauczyciela.php">PLANY</a></li>
         </ul>
     </div>
 
@@ -60,7 +60,7 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Nauczyciel 
                     <li><a href="kalendarz.php">KALENDARZ</a></li>
                     <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
                     <li><a href="profile.php">PROFILE</a></li>
-                    <li><a href="plany.php">PLANY</a></li>
+                    <li><a href="plany_nauczyciela.php">PLANY</a></li>
                 </ul>
             </li>
         </ol>
@@ -96,19 +96,18 @@ else
     
     
     
-    
+     
 
       $spr_naucz = "SELECT przedmioty.id_przedmiotu, przedmioty.nazwa, nauczyciele_klasa_przedmiot.id_u¿ytkownika, daneuzytkownika.nazwisko, uzytkownicy.login
                     FROM nauczyciele_klasa_przedmiot
                     INNER JOIN przedmioty ON nauczyciele_klasa_przedmiot.id_przedmiotu=przedmioty.id_przedmiotu
                     INNER JOIN daneuzytkownika ON nauczyciele_klasa_przedmiot.id_u¿ytkownika=daneuzytkownika.id_uzytkownika
                     INNER JOIN uzytkownicy ON nauczyciele_klasa_przedmiot.id_u¿ytkownika=uzytkownicy.id_uzytkownika
-      ";
-      
-      //$zrob = $polaczenie->query($spr_naucz);
-var_dump($_SESSION['login']);
+                    WHERE login =".$_SESSION['login']. " ";
+    $result = $polaczenie->query($spr_naucz);
 
-
+      if($result=true)
+      {
     
 
        (isset($_POST['nazwa'])) ? $nazwa=$_POST['nazwa'] : $nazwa='nie dokonano wyboru';
@@ -136,7 +135,7 @@ var_dump($_SESSION['login']);
          
     }
 }
-
+}
     
 
      
