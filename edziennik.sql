@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 14 Kwi 2018, 19:48
+-- Czas generowania: 20 Kwi 2018, 17:10
 -- Wersja serwera: 10.1.31-MariaDB
 -- Wersja PHP: 7.2.3
 
@@ -61,7 +61,8 @@ INSERT INTO `daneuzytkownika` (`id_uzytkownika`, `imie`, `nazwisko`, `adress`, `
 (5, 'Mateusz', 'Lech', 'asdsa', '666', 'Opole', '486483413'),
 (6, 'Łukasz', 'Szorc', 'Sosnowiec', '8', 'Sosnowiec', '000411'),
 (7, 'Adam', 'Nowak', 'jakis', 'inny', 'jakies', '959884'),
-(8, 'Mateusz', 'Machcinski', 'asfa', '111', 'asfsdf', '2123');
+(8, 'Mateusz', 'Machcinski', 'asfa', '111', 'asfsdf', '2123'),
+(9, 'admin', 'admin', 'adminowska', '2', 'adminowo', '00000000');
 
 -- --------------------------------------------------------
 
@@ -81,6 +82,30 @@ CREATE TABLE `klasa` (
 INSERT INTO `klasa` (`id_klasy`, `nazwa`) VALUES
 (1, '1A'),
 (2, '1B');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `lekcja`
+--
+
+CREATE TABLE `lekcja` (
+  `id_lekcji` int(11) NOT NULL,
+  `fk_id_przedmiotu` int(11) NOT NULL,
+  `dzien_tygodnia` varchar(15) COLLATE utf8_polish_ci NOT NULL,
+  `czas_rozpoczecia` time NOT NULL,
+  `czas_zakonczenia` time NOT NULL,
+  `fk_id_klasy` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `lekcja`
+--
+
+INSERT INTO `lekcja` (`id_lekcji`, `fk_id_przedmiotu`, `dzien_tygodnia`, `czas_rozpoczecia`, `czas_zakonczenia`, `fk_id_klasy`) VALUES
+(1, 1, 'poniedzialek', '08:00:00', '08:45:00', 1),
+(2, 2, 'poniedzialek', '09:00:00', '09:45:00', 1),
+(3, 2, 'poniedzialek', '08:00:00', '08:45:00', 2);
 
 -- --------------------------------------------------------
 
@@ -170,7 +195,8 @@ INSERT INTO `uzytkownicy` (`id_uzytkownika`, `login`, `haslo`, `rola`, `rodzaj`)
 (5, 'matlec', 'qaz', '2', 'Nauczyciel'),
 (6, 'lukszo', 'qaz', '1', 'Uczen'),
 (7, 'adanow', 'now', '1', 'Uczen'),
-(8, 'matmac', 'mac', '2', 'Nauczyciel');
+(8, 'matmac', 'mac', '2', 'Nauczyciel'),
+(9, 'admin', 'admin', '0', 'admin');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -194,6 +220,12 @@ ALTER TABLE `daneuzytkownika`
 --
 ALTER TABLE `klasa`
   ADD PRIMARY KEY (`id_klasy`);
+
+--
+-- Indeksy dla tabeli `lekcja`
+--
+ALTER TABLE `lekcja`
+  ADD PRIMARY KEY (`id_lekcji`);
 
 --
 -- Indeksy dla tabeli `nauczyciele_klasa_przedmiot`
@@ -236,6 +268,12 @@ ALTER TABLE `aktualnosci`
   MODIFY `id_aktualnosci` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT dla tabeli `lekcja`
+--
+ALTER TABLE `lekcja`
+  MODIFY `id_lekcji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT dla tabeli `nauczyciele_klasa_przedmiot`
 --
 ALTER TABLE `nauczyciele_klasa_przedmiot`
@@ -251,7 +289,7 @@ ALTER TABLE `oceny`
 -- AUTO_INCREMENT dla tabeli `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
-  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ograniczenia dla zrzutów tabel

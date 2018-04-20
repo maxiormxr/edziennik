@@ -120,12 +120,12 @@ else
   
            // $wiersz = $rezultat->fetch_array();
              
-            $id = $wiersz[3];     
+            //$id = $wiersz[3];     
              
-            $rezultat->free_result();                
+            //$rezultat->free_result();                
         
     
-         echo $id;
+        // echo $id;
     
      }
     $polaczenie->close();
