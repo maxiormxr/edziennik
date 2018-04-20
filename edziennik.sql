@@ -1,15 +1,19 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Czas generowania: 20 Kwi 2018, 17:10
 -- Wersja serwera: 10.1.31-MariaDB
 -- Wersja PHP: 7.2.3
+=======
+-- Czas generowania: 15 Kwi 2018, 12:48
+-- Wersja serwera: 10.1.21-MariaDB
+-- Wersja PHP: 5.6.30
+>>>>>>> master
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -175,6 +179,27 @@ INSERT INTO `przedmioty` (`id_przedmiotu`, `nazwa`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `uczen`
+--
+
+CREATE TABLE `uczen` (
+  `id_ucznia` int(11) NOT NULL,
+  `fk_id_klasy` int(11) NOT NULL,
+  `fk_id_uzytkownika` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `uczen`
+--
+
+INSERT INTO `uczen` (`id_ucznia`, `fk_id_klasy`, `fk_id_uzytkownika`) VALUES
+(1, 1, 1),
+(2, 1, 6),
+(3, 2, 7);
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `uzytkownicy`
 --
 
@@ -203,32 +228,40 @@ INSERT INTO `uzytkownicy` (`id_uzytkownika`, `login`, `haslo`, `rola`, `rodzaj`)
 --
 
 --
--- Indeksy dla tabeli `aktualnosci`
+-- Indexes for table `aktualnosci`
 --
 ALTER TABLE `aktualnosci`
   ADD PRIMARY KEY (`id_aktualnosci`),
   ADD KEY `Id_uzytkownika` (`id_uzytkownika`);
 
 --
--- Indeksy dla tabeli `daneuzytkownika`
+-- Indexes for table `daneuzytkownika`
 --
 ALTER TABLE `daneuzytkownika`
   ADD PRIMARY KEY (`id_uzytkownika`);
 
 --
--- Indeksy dla tabeli `klasa`
+-- Indexes for table `klasa`
 --
 ALTER TABLE `klasa`
   ADD PRIMARY KEY (`id_klasy`);
 
 --
+<<<<<<< HEAD
 -- Indeksy dla tabeli `lekcja`
+=======
+-- Indexes for table `lekcja`
+>>>>>>> master
 --
 ALTER TABLE `lekcja`
   ADD PRIMARY KEY (`id_lekcji`);
 
 --
+<<<<<<< HEAD
 -- Indeksy dla tabeli `nauczyciele_klasa_przedmiot`
+=======
+-- Indexes for table `nauczyciele_klasa_przedmiot`
+>>>>>>> master
 --
 ALTER TABLE `nauczyciele_klasa_przedmiot`
   ADD PRIMARY KEY (`id_klasa`),
@@ -237,7 +270,7 @@ ALTER TABLE `nauczyciele_klasa_przedmiot`
   ADD KEY `id_przedmiotu` (`id_przedmiotu`);
 
 --
--- Indeksy dla tabeli `oceny`
+-- Indexes for table `oceny`
 --
 ALTER TABLE `oceny`
   ADD PRIMARY KEY (`id_oceny`),
@@ -246,13 +279,19 @@ ALTER TABLE `oceny`
   ADD KEY `id_klasy` (`id_klasy`);
 
 --
--- Indeksy dla tabeli `przedmioty`
+-- Indexes for table `przedmioty`
 --
 ALTER TABLE `przedmioty`
   ADD PRIMARY KEY (`id_przedmiotu`);
 
 --
--- Indeksy dla tabeli `uzytkownicy`
+-- Indexes for table `uczen`
+--
+ALTER TABLE `uczen`
+  ADD PRIMARY KEY (`id_ucznia`);
+
+--
+-- Indexes for table `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
   ADD PRIMARY KEY (`id_uzytkownika`);
@@ -266,7 +305,11 @@ ALTER TABLE `uzytkownicy`
 --
 ALTER TABLE `aktualnosci`
   MODIFY `id_aktualnosci` int(11) NOT NULL AUTO_INCREMENT;
-
+--
+-- AUTO_INCREMENT dla tabeli `lekcja`
+--
+ALTER TABLE `lekcja`
+  MODIFY `id_lekcji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT dla tabeli `lekcja`
 --
@@ -278,19 +321,26 @@ ALTER TABLE `lekcja`
 --
 ALTER TABLE `nauczyciele_klasa_przedmiot`
   MODIFY `id_klasa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT dla tabeli `oceny`
 --
 ALTER TABLE `oceny`
   MODIFY `id_oceny` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
+--
+-- AUTO_INCREMENT dla tabeli `uczen`
+--
+ALTER TABLE `uczen`
+  MODIFY `id_ucznia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT dla tabeli `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
+<<<<<<< HEAD
   MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
+=======
+  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+>>>>>>> master
 --
 -- Ograniczenia dla zrzutów tabel
 --
@@ -322,7 +372,6 @@ ALTER TABLE `oceny`
   ADD CONSTRAINT `oceny_ibfk_1` FOREIGN KEY (`id_przemiotu`) REFERENCES `przedmioty` (`id_przedmiotu`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `oceny_ibfk_2` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownicy` (`id_uzytkownika`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `oceny_ibfk_3` FOREIGN KEY (`id_klasy`) REFERENCES `klasa` (`id_klasy`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

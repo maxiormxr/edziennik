@@ -18,7 +18,7 @@
         
 
      $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND rola=1";
-     $sql2 = "SELECT daneuzytkownika.imie, daneuzytkownika.nazwisko, uzytkownicy.login 
+     $sql2 = "SELECT daneuzytkownika.imie, daneuzytkownika.nazwisko, uzytkownicy.login
      FROM daneuzytkownika 
      INNER JOIN uzytkownicy ON uzytkownicy.id_uzytkownika = daneuzytkownika.id_uzytkownika
      WHERE login='$login'";
@@ -34,6 +34,7 @@
             {
                 $wiersz = $rezultat->fetch_assoc();
                 $_SESSION['login']=$wiersz['login'];
+                  $_SESSION['haslo']=$wiersz['haslo'];
 
                 
 				$wiersz2 = $wykonaj->fetch_assoc();
@@ -120,7 +121,11 @@ else
   
            // $wiersz = $rezultat->fetch_array();
              
+<<<<<<< HEAD
             //$id = $wiersz[3];     
+=======
+           // $id = $wiersz[3];     
+>>>>>>> master
              
             //$rezultat->free_result();                
         
