@@ -67,7 +67,7 @@ echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwisko'] . ' Nauczyciel <
             <li><a >MENU</a>
                 <ul >
                     <li><a href="aktualnosci_nauczyciela.php">AKTUALNOŒCI</a></li>
-                    <li><a href="oceny_nauczyciela.php">OCENY</a></li>
+                    <li><a href="oceny_nauczyciel.php">OCENY</a></li>
                     <li><a href="obecnosci.php">OBECNOŒCI</a></li>
                     <li><a href="kalendarz.php">KALENDARZ</a></li>
                     <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>

@@ -41,7 +41,7 @@ session_start();
     <div id="menu">
         <ul>
             <li><a href="aktualnosci_nauczyciela.php">AKTUALNO?CI</a></li>
-            <li><a href="oceny_nauczyciela.php">OCENY</a></li>
+            <li><a href="oceny_nauczyciel.php">OCENY</a></li>
             <li><a href="obecnosci.php">OBECNO?CI</a></li>
             <li><a href="kalendarz.php">KALENDARZ</a></li>
             <li><a href="wiadmosci.php">WIADOMO?CI</a></li>
@@ -55,7 +55,7 @@ session_start();
             <li><a >MENU</a>
                 <ul >
                     <li><a href="aktualnosci_nauczyciela.php">AKTUALNO?CI</a></li>
-                    <li><a href="oceny_nauczyciela.php">OCENY</a></li>
+                    <li><a href="oceny_nauczyciel.php">OCENY</a></li>
                     <li><a href="obecnosci.php">OBECNO?CI</a></li>
                     <li><a href="kalendarz.php">KALENDARZ</a></li>
                     <li><a href="wiadmosci.php">WIADOMO?CI</a></li>

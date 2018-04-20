@@ -40,8 +40,8 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Nauczyciel 
 
     <div id="menu">
         <ul>
-            <li><a href="aktualnosci_ucznia.php">AKTUALNOŒCI</a></li>
-            <li><a href="oceny_ucznia.php">OCENY</a></li>
+            <li><a href="aktualnosci_nauczyciela.php">AKTUALNOŒCI</a></li>
+            <li><a href="oceny_nauczyciel.php">OCENY</a></li>
             <li><a href="obecnosci.php">OBECNOŒCI</a></li>
             <li><a href="kalendarz.php">KALENDARZ</a></li>
             <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
@@ -54,8 +54,8 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Nauczyciel 
         <ol>
             <li><a >MENU</a>
                 <ul >
-                    <li><a href="aktualnosci_ucznia.php">AKTUALNOŒCI</a></li>
-                    <li><a href="oceny_ucznia.php">OCENY</a></li>
+                    <li><a href="aktualnosci_nauczyciela.php">AKTUALNOŒCI</a></li>
+                    <li><a href="oceny_nauczyciel.php">OCENY</a></li>
                     <li><a href="obecnosci.php">OBECNOŒCI</a></li>
                     <li><a href="kalendarz.php">KALENDARZ</a></li>
                     <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
