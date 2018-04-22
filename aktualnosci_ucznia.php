@@ -20,6 +20,12 @@ session_start();
 
 
         <img src="Images/Logo.png" alt="" width="200" height="150" /><br />
+    <div id="wyloguj">
+        <ul>
+            <li><a href="wyloguj.html">WYLOGUJ</a></li>
+        </ul>
+
+    </div>
 <script type="text/javascript">
 <!--
 function dodaj(pole){
@@ -41,12 +47,7 @@ echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwisko'] . ' Uczen </span
 
 
 ?>
-    <div id="wyloguj">
-        <ul>
-            <li><a href="wyloguj.html">WYLOGUJ</a></li>
-        </ul>
 
-    </div>
 
 
 
