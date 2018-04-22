@@ -20,6 +20,12 @@ session_start();
 
 
         <img src="Images/Logo.png" alt="" width="200" height="150" /><br />
+    <div id="wyloguj">
+        <ul>
+            <li><a href="wyloguj.html">WYLOGUJ</a></li>
+        </ul>
+
+    </div>
 <script type="text/javascript">
 <!--
 function dodaj(pole){
@@ -41,12 +47,7 @@ echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwisko'] . ' Uczen </span
 
 
 ?>
-    <div id="wyloguj">
-        <ul>
-            <li><a href="wyloguj.html">WYLOGUJ</a></li>
-        </ul>
 
-    </div>
 
 
 
@@ -59,7 +60,7 @@ echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwisko'] . ' Uczen </span
             <li><a href="kalendarz.php">KALENDARZ</a></li>
             <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
             <li><a href="profile.php">PROFILE</a></li>
-            <li><a href="plany.php">PLANY</a></li>
+            <li><a href="plany_ucznia.php">PLANY</a></li>
         </ul>
     </div>
 
@@ -73,7 +74,7 @@ echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwisko'] . ' Uczen </span
                     <li><a href="kalendarz.php">KALENDARZ</a></li>
                     <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
                     <li><a href="profile.php">PROFILE</a></li>
-                    <li><a href="plany.php">PLANY</a></li>
+                    <li><a href="plany_ucznia.php">PLANY</a></li>
                 </ul>
             </li>
         </ol>
