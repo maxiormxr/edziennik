@@ -114,152 +114,25 @@ else
                 
     $result = $polaczenie->query($zapytanie_o_plan);
     if ($result->num_rows > 0) {
-
-        $poniedzialek = array("","","","","","");
-        $wtorek = array("","","","","","");
-        $sroda = array("","","","","","");
-        $czwartek = array("","","","","","");
-        $piatek = array("","","","","","");
-
         
         while($row = $result->fetch_assoc()) {
 
-        if ($row["dzien_tygodnia"]=="poniedzialek" && $row["czas_rozpoczecia"]=="08:00:00")
-        {
-            $poniedzialek[0] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="poniedzialek" && $row["czas_rozpoczecia"]=="09:00:00")
-        {
-            $poniedzialek[1] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="poniedzialek" && $row["czas_rozpoczecia"]=="10:00:00")
-        {
-            $poniedzialek[2] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="poniedzialek" && $row["czas_rozpoczecia"]=="11:00:00")
-        {
-            $poniedzialek[3] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="poniedzialek" && $row["czas_rozpoczecia"]=="12:00:00")
-        {
-            $poniedzialek[4] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="poniedzialek" && $row["czas_rozpoczecia"]=="13:00:00")
-        {
-            $poniedzialek[5] = $row["nazwa"];
-        }
-
-        if ($row["dzien_tygodnia"]=="wtorek" && $row["czas_rozpoczecia"]=="08:00:00")
-        {
-            $wtorek[0] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="wtorek" && $row["czas_rozpoczecia"]=="09:00:00")
-        {
-            $wtorek[1] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="wtorek" && $row["czas_rozpoczecia"]=="10:00:00")
-        {
-            $wtorek[2] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="wtorek" && $row["czas_rozpoczecia"]=="11:00:00")
-        {
-            $wtorek[3] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="wtorek" && $row["czas_rozpoczecia"]=="12:00:00")
-        {
-            $wtorek[4] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="wtorek" && $row["czas_rozpoczecia"]=="13:00:00")
-        {
-            $wtorek[5] = $row["nazwa"];
-        }
-
-        if ($row["dzien_tygodnia"]=="sroda" && $row["czas_rozpoczecia"]=="08:00:00")
-        {
-            $sroda[0] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="sroda" && $row["czas_rozpoczecia"]=="09:00:00")
-        {
-            $sroda[1] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="sroda" && $row["czas_rozpoczecia"]=="10:00:00")
-        {
-            $sroda[2] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="sroda" && $row["czas_rozpoczecia"]=="11:00:00")
-        {
-            $sroda[3] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="sroda" && $row["czas_rozpoczecia"]=="12:00:00")
-        {
-            $sroda[4] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="sroda" && $row["czas_rozpoczecia"]=="13:00:00")
-        {
-            $sroda[5] = $row["nazwa"];
-        }
-
-        if ($row["dzien_tygodnia"]=="czwartek" && $row["czas_rozpoczecia"]=="08:00:00")
-        {
-            $czwartek[0] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="czwartek" && $row["czas_rozpoczecia"]=="09:00:00")
-        {
-            $czwartek[1] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="czwartek" && $row["czas_rozpoczecia"]=="10:00:00")
-        {
-            $czwartek[2] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="czwartek" && $row["czas_rozpoczecia"]=="11:00:00")
-        {
-            $czwartek[3] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="czwartek" && $row["czas_rozpoczecia"]=="12:00:00")
-        {
-            $czwartek[4] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="czwartek" && $row["czas_rozpoczecia"]=="13:00:00")
-        {
-            $czwartek[5] = $row["nazwa"];
-        }
-
-        if ($row["dzien_tygodnia"]=="piatek" && $row["czas_rozpoczecia"]=="08:00:00")
-        {
-            $piatek[0] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="piatek" && $row["czas_rozpoczecia"]=="09:00:00")
-        {
-            $piatek[1] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="piatek" && $row["czas_rozpoczecia"]=="10:00:00")
-        {
-            $piatek[2] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="piatek" && $row["czas_rozpoczecia"]=="11:00:00")
-        {
-            $piatek[3] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="piatek" && $row["czas_rozpoczecia"]=="12:00:00")
-        {
-            $piatek[4] = $row["nazwa"];
-        }
-        if ($row["dzien_tygodnia"]=="piatek" && $row["czas_rozpoczecia"]=="13:00:00")
-        {
-            $piatek[5] = $row["nazwa"];
-        }
-
-        }
+        $plan[$row['dzien_tygodnia']][$row['czas_rozpoczecia']]=$row['nazwa'];
+        
+    }
 
 }
 
     
+        //var_dump($plan);
 
      
     $polaczenie->close();
+
+
 }
 ?>
-  
+
   <table style='width: 100%;' border='1'>
         <tbody>
         <tr>
@@ -275,31 +148,37 @@ else
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $poniedzialek[0];
+                //echo $poniedzialek[0];
+                if (isset($plan['poniedzialek']['08:00:00']))
+                    echo $plan['poniedzialek']['08:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                    echo $wtorek[0];
+                if (isset($plan['wtorek']['08:00:00']))
+                    echo $plan['wtorek']['08:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $sroda[0];
+                if(isset($plan['sroda']['08:00:00']))
+                    echo $plan['sroda']['08:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $czwartek[0];
+                if(isset($plan['czwartek']['08:00:00']))
+                    echo $plan['czwartek']['08:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $piatek[0];
+                if(isset($plan['piatek']['08:00:00']))
+                    echo $plan['piatek']['08:00:00'];
             ?>
         </td>
         </tr>
@@ -308,31 +187,36 @@ else
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $poniedzialek[1];
+                if(isset($plan['poniedzialek']['09:00:00']))                
+                    echo $plan['poniedzialek']['09:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $wtorek[1];
+            if(isset($plan['wtorek']['09:00:00']))    
+                echo $plan['wtorek']['09:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $sroda[1];
+                if(isset($plan['sroda']['09:00:00']))                 
+                    echo $plan['sroda']['09:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $czwartek[1];
+                if(isset($plan['czwartek']['09:00:00']))
+                    echo $plan['czwartek']['09:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $piatek[1];
+                if(isset($plan['piatek']['09:00:00']))
+                    echo $plan['piatek']['09:00:00'];
             ?>
         </td>
         </tr>
@@ -341,31 +225,37 @@ else
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $poniedzialek[2];
+                //echo $poniedzialek[0];
+                if(isset($plan['poniedzialek']['10:00:00']))
+                    echo $plan['poniedzialek']['10:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $wtorek[2];
+                if(isset($plan['wtorek']['10:00:00']))
+                    echo $plan['wtorek']['10:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $sroda[2];
+                if(isset($plan['sroda']['10:00:00']))
+                    echo $plan['sroda']['10:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $czwartek[2];
+                if(isset($plan['czwartek']['10:00:00']))
+                    echo $plan['czwartek']['10:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $piatek[2];
+                if(isset($plan['piatek']['10:00:00']))
+                    echo $plan['piatek']['10:00:00'];
             ?>
         </td>
         </tr>
@@ -374,31 +264,36 @@ else
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $poniedzialek[3];
+                if(isset($plan['poniedzialek']['11:00:00']))
+                    echo $plan['poniedzialek']['11:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $wtorek[3];
+                if(isset($plan['wtorek']['11:00:00']))
+                    echo $plan['wtorek']['11:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $sroda[3];
+                if(isset($plan['sroda']['11:00:00']))
+                    echo $plan['sroda']['11:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $czwartek[3];
+                if(isset($plan['czwartek']['11:00:00']))
+                    echo $plan['czwartek']['11:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $piatek[3];
+                if(isset($plan['piatek']['11:00:00']))
+                    echo $plan['piatek']['11:00:00'];
             ?>
         </td>
         </tr>
@@ -407,31 +302,37 @@ else
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $poniedzialek[4];
+                //echo $poniedzialek[0];
+                if(isset($plan['poniedzialek']['12:00:00']))
+                    echo $plan['poniedzialek']['12:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $wtorek[4];
+                if(isset($plan['wtorek']['12:00:00']))
+                    echo $plan['wtorek']['12:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $sroda[4];
+                if(isset($plan['sroda']['12:00:00']))
+                    echo $plan['sroda']['12:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $czwartek[4];
+                if(isset($plan['czwartek']['12:00:00']))
+                    echo $plan['czwartek']['12:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $piatek[4];
+                if(isset($plan['piatek']['12:00:00']))
+                    echo $plan['piatek']['12:00:00'];
             ?>
         </td>
         </tr>
@@ -440,31 +341,36 @@ else
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $poniedzialek[5];
+                if(isset($plan['poniedzialek']['13:00:00']))
+                    echo $plan['poniedzialek']['13:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $wtorek[5];
+                if(isset($plan['wtorek']['13:00:00']))
+                    echo $plan['wtorek']['13:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $sroda[5];
+                if(isset($plan['sroda']['13:00:00']))
+                    echo $plan['sroda']['13:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $czwartek[5];
+                if(isset($plan['czwartek']['13:00:00']))
+                    echo $plan['czwartek']['13:00:00'];
             ?>
         </td>
         <td>
             <?php
 //tu bedzie odwolanie do tablicy zawierajacej nazwe przedmiotu
-                echo $piatek[5];
+                if(isset($plan['piatek']['13:00:00']))
+                    echo $plan['piatek']['13:00:00'];
             ?>
         </td>
         </tr>
