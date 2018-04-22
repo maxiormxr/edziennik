@@ -14,11 +14,46 @@
 	{
 		$login = $_POST['login'];
 		$haslo = $_POST['haslo'];
-	
+        
+	 $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND rola=0";
+     $sql2 = "SELECT daneuzytkownika.imie, daneuzytkownika.nazwisko, uzytkownicy.login
+     FROM daneuzytkownika 
+     INNER JOIN uzytkownicy ON uzytkownicy.id_uzytkownika = daneuzytkownika.id_uzytkownika
+     WHERE login='$login'";
+     
+     		$wykonaj = $polaczenie->query($sql2);
+      
+        if($rezultat =@$polaczenie->query($sql))
+        {
+            $ilu_userow = $rezultat->num_rows;
+            if($ilu_userow>0)
+            {
+                $wiersz = $rezultat->fetch_assoc();
+                $_SESSION['login']=$wiersz['login'];
+                  $_SESSION['haslo']=$wiersz['haslo'];
+
+                
+				$wiersz2 = $wykonaj->fetch_assoc();
+				$_SESSION['imie']=$wiersz2['imie'];
+                $_SESSION['nazwisko']=$wiersz2['nazwisko'];
+             
+				
+                $rezultat->close();
+                header('Location:aktualnosci_admina.php');
+                
+            }else{
+                
+                
+            }
+		
+        
+        
+        }
+        
         
 
      $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND haslo='$haslo' AND rola=1";
-     $sql2 = "SELECT daneuzytkownika.imie, daneuzytkownika.nazwisko, uzytkownicy.login 
+     $sql2 = "SELECT daneuzytkownika.imie, daneuzytkownika.nazwisko, uzytkownicy.login
      FROM daneuzytkownika 
      INNER JOIN uzytkownicy ON uzytkownicy.id_uzytkownika = daneuzytkownika.id_uzytkownika
      WHERE login='$login'";
@@ -34,6 +69,7 @@
             {
                 $wiersz = $rezultat->fetch_assoc();
                 $_SESSION['login']=$wiersz['login'];
+                  $_SESSION['haslo']=$wiersz['haslo'];
 
                 
 				$wiersz2 = $wykonaj->fetch_assoc();
@@ -120,12 +156,16 @@ else
   
            // $wiersz = $rezultat->fetch_array();
              
-            $id = $wiersz[3];     
+
+            //$id = $wiersz[3];     
+
+           // $id = $wiersz[3];     
+
              
-            $rezultat->free_result();                
+            //$rezultat->free_result();                
         
     
-         echo $id;
+        // echo $id;
     
      }
     $polaczenie->close();

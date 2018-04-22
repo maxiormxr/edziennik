@@ -40,13 +40,13 @@ session_start();
 
     <div id="menu">
         <ul>
-            <li><a href="aktualnosci_ucznia.php">AKTUALNOï¿½CI</a></li>
-            <li><a href="oceny_ucznia.php">OCENY</a></li>
-            <li><a href="obecnosci.php">OBECNOï¿½CI</a></li>
+            <li><a href="aktualnosci_nauczyciela.php">AKTUALNO?CI</a></li>
+            <li><a href="oceny_nauczyciel.php">OCENY</a></li>
+            <li><a href="obecnosci.php">OBECNO?CI</a></li>
             <li><a href="kalendarz.php">KALENDARZ</a></li>
-            <li><a href="wiadmosci.php">WIADOMOï¿½CI</a></li>
+            <li><a href="wiadmosci.php">WIADOMO?CI</a></li>
             <li><a href="profile.php">PROFILE</a></li>
-            <li><a href="plany.php">PLANY</a></li>
+            <li><a href="plany_nauczyciela.php">PLANY</a></li>
         </ul>
     </div>
 
@@ -54,13 +54,13 @@ session_start();
         <ol>
             <li><a >MENU</a>
                 <ul >
-                    <li><a href="aktualnosci_ucznia.php">AKTUALNOï¿½CI</a></li>
-                    <li><a href="oceny_ucznia.php">OCENY</a></li>
-                    <li><a href="obecnosci.php">OBECNOï¿½CI</a></li>
+                    <li><a href="aktualnosci_nauczyciela.php">AKTUALNO?CI</a></li>
+                    <li><a href="oceny_nauczyciel.php">OCENY</a></li>
+                    <li><a href="obecnosci.php">OBECNO?CI</a></li>
                     <li><a href="kalendarz.php">KALENDARZ</a></li>
-                    <li><a href="wiadmosci.php">WIADOMOï¿½CI</a></li>
+                    <li><a href="wiadmosci.php">WIADOMO?CI</a></li>
                     <li><a href="profile.php">PROFILE</a></li>
-                    <li><a href="plany.php">PLANY</a></li>
+                    <li><a href="plany_nauczyciela.php">PLANY</a></li>
                 </ul>
             </li>
         </ol>
@@ -264,11 +264,11 @@ else
         <tbody>
         <tr>
         <td style='width: 10%;'>Godzina</td>
-        <td style='width: 18%;'>PoniedziaÅ‚ek</td>
+        <td style='width: 18%;'>Poniedzia³ek</td>
         <td style='width: 18%;'>Wtorek</td>
-        <td style='width: 18%;'>Åšroda</td>
+        <td style='width: 18%;'>Œroda</td>
         <td style='width: 18%;'>Czwartek</td>
-        <td style='width: 18%;'>PiÄ…tek</td>
+        <td style='width: 18%;'>Pi¹tek</td>
         </tr>
         <tr>
         <td>8:00<br>8:45</td>

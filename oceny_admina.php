@@ -40,13 +40,13 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Uczen </spa
 
     <div id="menu">
         <ul>
-            <li><a href="aktualnosci_ucznia.php">AKTUALNOŒCI</a></li>
-            <li><a href="oceny_ucznia.php">OCENY</a></li>
-            <li><a href="obecnosci.php">OBECNOŒCI</a></li>
-            <li><a href="kalendarz.php">KALENDARZ</a></li>
-            <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
-            <li><a href="profile.php">PROFILE</a></li>
-            <li><a href="plany_ucznia.php">PLANY</a></li>
+            <li><a href="aktualnosci_admina.php">AKTUALNOŒCI</a></li>
+            <li><a href="oceny_admina.php">OCENY</a></li>
+            <li><a href="obecnosci_admina.php">OBECNOŒCI</a></li>
+            <li><a href="kalendarz_admina.php">KALENDARZ</a></li>
+            <li><a href="wiadmosci_admina.php">WIADOMOŒCI</a></li>
+            <li><a href="profile_admina.php">PROFILE</a></li>
+            <li><a href="plany_admina.php">PLANY</a></li>
         </ul>
     </div>
 
@@ -54,13 +54,13 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Uczen </spa
         <ol>
             <li><a >MENU</a>
                 <ul >
-                    <li><a href="aktualnosci_ucznia.php">AKTUALNOŒCI</a></li>
-                    <li><a href="oceny_ucznia.php">OCENY</a></li>
-                    <li><a href="obecnosci.php">OBECNOŒCI</a></li>
-                    <li><a href="kalendarz.php">KALENDARZ</a></li>
-                    <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
-                    <li><a href="profile.php">PROFILE</a></li>
-                    <li><a href="plany_ucznia.php">PLANY</a></li>
+                    <li><a href="aktualnosci_admina.php">AKTUALNOŒCI</a></li>
+                    <li><a href="oceny_admina.php">OCENY</a></li>
+                    <li><a href="obecnosci_admina.php">OBECNOŒCI</a></li>
+                    <li><a href="kalendarz_admina.php">KALENDARZ</a></li>
+                    <li><a href="wiadmosci_admina.php">WIADOMOŒCI</a></li>
+                    <li><a href="profile_admina.php">PROFILE</a></li>
+                    <li><a href="plany_admina.php">PLANY</a></li>
                 </ul>
             </li>
         </ol>

@@ -1,0 +1,54 @@
+
+ @media only screen and (max-width: 2000px){
+body  
+	{
+        padding:50px;
+	   margin:5px;
+	   background: #DCDCDC	; 
+	 text-align: center; 
+	 font-size: 1em; 
+	 font-family: verdana, tahoma, arial, helvetica, sans-serif;
+	}
+#logo{
+   max-width: 30%;
+   height:auto;
+   width:auto
+}    
+	input
+	{
+	text-align: center; 
+	
+		
+		width:300px;
+		height:30px;
+	}
+}
+@media only screen and (max-width: 450px){
+    
+    body  
+	{
+        padding:30px;
+	   
+	   background: #DCDCDC	; 
+	 text-align: left; 
+	 font-size: 1em; 
+	 font-family: verdana, tahoma, arial, helvetica, sans-serif;
+	}
+    
+#logo{
+   max-width: 30%;
+   height:auto;
+   width:auto
+}    
+
+	input
+	{
+	text-align: center; 
+	
+		
+		width:auto;
+		height:auto;
+	}
+    
+    }
+    
