@@ -20,6 +20,12 @@ session_start();
 
 
         <img src="Images/Logo.png" alt="" width="200" height="150" /><br />
+            <div id="wyloguj">
+        <ul>
+            <li><a href="wyloguj.html">WYLOGUJ</a></li>
+        </ul>
+
+    </div>
 <script type="text/javascript">
 <!--
 function dodaj(pole){
@@ -41,16 +47,21 @@ echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwisko'] . ' </span>';
 
 
 ?>
-    <div id="wyloguj">
-        <ul>
-            <li><a href="wyloguj.html">WYLOGUJ</a></li>
-        </ul>
-
-    </div>
 
 
+<div id="menu2">
+  <ul>
+     <li><a href="http://localhost/edziennik-master/aktualnosci_ucznia.php"><span><i class="fa fa-fw fa-globe"></i> AKTUALNOŒCI</span></a></li>
+     <li><a href="http://localhost/edziennik-master/oceny_ucznia.php"><span><i class="fa fa-fw fa-balance-scale"></i> OCENY</span></a></li>
+     <li><a href="http://localhost/edziennik-master/obecnosci.php"><span><i class="fa fa-fw fa-street-view"></i> OBECNOŒCI</span></a></li>
+     <li><a href="http://localhost/edziennik-master/kalendarz.php"><span><i class="fa fa-fw fa-calendar"></i> KALENDARZ</span></a></li>
+     <li><a href="http://localhost/edziennik-master/wiadmosci.php"><span><i class="fa fa-fw fa-comments-o"></i> WIADOMOŒCI</span></a></li>
+     <li><a href="http://localhost/edziennik-master/profile.php"><span><i class="fa fa-fw fa-group"></i> PROFILE</span></a></li>
+     <li><a href="http://localhost/edziennik-master/plany_ucznia.php"><span><i class="fa fa-fw fa-th"></i> PLANY</span></a></li>
+  </ul>
+</div>
 
-    <div id="menu">
+<!--    <div id="menu">
         <ul>
             <li><a href="aktualnosci_admina.php">AKTUALNOŒCI</a></li>
             <li><a href="oceny_admina.php">OCENY</a></li>
@@ -60,7 +71,7 @@ echo '<span style="color: #FFFFF0;">  ' . $_SESSION['nazwisko'] . ' </span>';
             <li><a href="profile_admina.php">PROFILE</a></li>
             <li><a href="plany_admina.php">PLANY</a></li>
         </ul>
-    </div>
+    </div>-->
 
     <div id="male">
         <ol>
