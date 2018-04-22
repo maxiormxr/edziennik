@@ -1,4 +1,4 @@
- <head>
+<head>
  
   <?php
 
@@ -13,42 +13,48 @@ if ($polaczenie->connect_errno!=0)
 else
 {
 
-       $login = $_POST['login']; 
-    $haslo = $_POST['haslo']; 
-     
-     $rola = $_POST['rola'];
-     $rodzaj=$_POST['rodzaj'];
-     $imie = $_POST['imie'];
-    $nazwisko = $_POST['nazwisko']; 
-     
-    $adres = $_POST['adres']; 
-    $nrdomu = $_POST['nrdomu']; 
-    $miasto = $_POST['miasto']; 
-    $pesel = $_POST['pesel']; 
+    $login = $_POST['login_uzytkownika']; 
+    $haslo = $_POST['haslo_uzytkownika'];  
+    $rola = $_POST['rola_uzytkownika'];
+    $rodzaj=$_POST['rodzaj_uzytkownika'];
+    $imie = $_POST['imie_uzytkownika'];
+    $nazwisko = $_POST['nazwisko_uzytkownika'];      
+    $adres = $_POST['adres_uzytkownika']; 
+    $nrdomu = $_POST['nrdomu_uzytkownika']; 
+    $miasto = $_POST['miasto_uzytkownika']; 
+    $pesel = $_POST['pesel_uzytkownika']; 
 
  
     $sql="INSERT INTO uzytkownicy SET login='$login', haslo='$haslo', rola='$rola' , rodzaj='$rodzaj'";
-   
- $sql1="Select id_uzytkownika, login, haslo FROM uzytkownicy WHERE login='$login'  ";
+
  
     
-  $result = $polaczenie->query($sql);
+    $result = $polaczenie->query($sql);
+    // dotad dziala
+    $sql1="SELECT id_uzytkownika, login, haslo FROM uzytkownicy WHERE login='$login'";
    
-  $result2 = $polaczenie->query($sql1);
+    $result2 = $polaczenie->query($sql1);
  
    
  
-   $wiersz = $result2->fetch_assoc();
-      $_SESSION['id_uzytkownika']=$wiersz['id_uzytkownika'];
-   
+    $wiersz = $result2->fetch_assoc();
+
+    var_dump($_POST);
+
+    //$_SESSION['id_uzytkownika']=$wiersz['id_uzytkownika'];
+    $id_wprowadzanego_uzytkownika = $wiersz['id_uzytkownika'];
+
  
 
-   $sql2="INSERT INTO daneuzytkownika SET id_uzytkownika=".$_SESSION['id_uzytkownika']. ", imie='$imie', nazwisko='$nazwisko', adres='$adres' , nrdomu='$nrdomu', miasto='$miasto', pesel='$pesel'";
-      $result3 = $polaczenie->query($sql2);
+    $sql2="INSERT INTO daneuzytkownika SET id_uzytkownika='$id_wprowadzanego_uzytkownika', imie='$imie', nazwisko='$nazwisko', adres='$adres', nrdomu='$nrdomu', miasto='$miasto', pesel='$pesel'";
+    $result3 = $polaczenie->query($sql2);
+
+    var_dump($sql2);
+    var_dump($result3);
           
      
     if($polaczenie) echo "dane zostaly dodane poprawnie"; 
-    else echo "B³¹d nie uda³o siê dodaæ nowego rekordu"; 
+    else echo "Bï¿½ï¿½d nie udaï¿½o siï¿½ dodaï¿½ nowego rekordu"; 
      
 
   

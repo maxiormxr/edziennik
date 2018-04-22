@@ -3,15 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Czas generowania: 20 Kwi 2018, 17:10
--- Wersja serwera: 10.1.31-MariaDB
--- Wersja PHP: 7.2.3
-=======
--- Czas generowania: 15 Kwi 2018, 12:48
+-- Czas generowania: 22 Kwi 2018, 23:21
 -- Wersja serwera: 10.1.21-MariaDB
 -- Wersja PHP: 5.6.30
->>>>>>> master
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -50,7 +44,7 @@ CREATE TABLE `daneuzytkownika` (
   `id_uzytkownika` int(11) NOT NULL,
   `imie` varchar(25) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `nazwisko` varchar(25) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `adress` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `adres` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `nrdomu` varchar(10) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `miasto` varchar(25) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `pesel` varchar(11) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL
@@ -60,13 +54,14 @@ CREATE TABLE `daneuzytkownika` (
 -- Zrzut danych tabeli `daneuzytkownika`
 --
 
-INSERT INTO `daneuzytkownika` (`id_uzytkownika`, `imie`, `nazwisko`, `adress`, `nrdomu`, `miasto`, `pesel`) VALUES
+INSERT INTO `daneuzytkownika` (`id_uzytkownika`, `imie`, `nazwisko`, `adres`, `nrdomu`, `miasto`, `pesel`) VALUES
 (1, 'Patryk', 'Kurowski', 'adres', '2', 'opole', '99999999'),
 (5, 'Mateusz', 'Lech', 'asdsa', '666', 'Opole', '486483413'),
 (6, 'Łukasz', 'Szorc', 'Sosnowiec', '8', 'Sosnowiec', '000411'),
 (7, 'Adam', 'Nowak', 'jakis', 'inny', 'jakies', '959884'),
 (8, 'Mateusz', 'Machcinski', 'asfa', '111', 'asfsdf', '2123'),
-(9, 'admin', 'admin', 'adminowska', '2', 'adminowo', '00000000');
+(9, 'admin', 'admin', 'adminowska', '2', 'adminowo', '00000000'),
+(10, 'qwert', 'qwerty', 'qwerty', '1234', 'qwerty', '1234567');
 
 -- --------------------------------------------------------
 
@@ -221,7 +216,8 @@ INSERT INTO `uzytkownicy` (`id_uzytkownika`, `login`, `haslo`, `rola`, `rodzaj`)
 (6, 'lukszo', 'qaz', '1', 'Uczen'),
 (7, 'adanow', 'now', '1', 'Uczen'),
 (8, 'matmac', 'mac', '2', 'Nauczyciel'),
-(9, 'admin', 'admin', '0', 'admin');
+(9, 'admin', 'admin', '0', 'admin'),
+(10, 'qwerty', 'qwerty', '1', 'Uczen');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -247,21 +243,13 @@ ALTER TABLE `klasa`
   ADD PRIMARY KEY (`id_klasy`);
 
 --
-<<<<<<< HEAD
--- Indeksy dla tabeli `lekcja`
-=======
 -- Indexes for table `lekcja`
->>>>>>> master
 --
 ALTER TABLE `lekcja`
   ADD PRIMARY KEY (`id_lekcji`);
 
 --
-<<<<<<< HEAD
--- Indeksy dla tabeli `nauczyciele_klasa_przedmiot`
-=======
 -- Indexes for table `nauczyciele_klasa_przedmiot`
->>>>>>> master
 --
 ALTER TABLE `nauczyciele_klasa_przedmiot`
   ADD PRIMARY KEY (`id_klasa`),
@@ -311,12 +299,6 @@ ALTER TABLE `aktualnosci`
 ALTER TABLE `lekcja`
   MODIFY `id_lekcji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT dla tabeli `lekcja`
---
-ALTER TABLE `lekcja`
-  MODIFY `id_lekcji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT dla tabeli `nauczyciele_klasa_przedmiot`
 --
 ALTER TABLE `nauczyciele_klasa_przedmiot`
@@ -335,12 +317,7 @@ ALTER TABLE `uczen`
 -- AUTO_INCREMENT dla tabeli `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
-<<<<<<< HEAD
-  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
-=======
-  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
->>>>>>> master
+  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Ograniczenia dla zrzutów tabel
 --

@@ -40,11 +40,11 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . '  </span>';
 
     <div id="menu">
         <ul>
-            <li><a href="aktualnosci_admina.php">AKTUALNOŒCI</a></li>
+            <li><a href="aktualnosci_admina.php">AKTUALNOï¿½CI</a></li>
             <li><a href="oceny_admina.php">OCENY</a></li>
-            <li><a href="obecnosci_admina.php">OBECNOŒCI</a></li>
+            <li><a href="obecnosci_admina.php">OBECNOï¿½CI</a></li>
             <li><a href="kalendarz_admina.php">KALENDARZ</a></li>
-            <li><a href="wiadmosci_admina.php">WIADOMOŒCI</a></li>
+            <li><a href="wiadmosci_admina.php">WIADOMOï¿½CI</a></li>
             <li><a href="profile_admina.php">PROFILE</a></li>
             <li><a href="plany_admina.php">PLANY</a></li>
         </ul>
@@ -54,11 +54,11 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . '  </span>';
         <ol>
             <li><a >MENU</a>
                 <ul >
-                    <li><a href="aktualnosci_admina.php">AKTUALNOŒCI</a></li>
+                    <li><a href="aktualnosci_admina.php">AKTUALNOï¿½CI</a></li>
                     <li><a href="oceny_admina.php">OCENY</a></li>
-                    <li><a href="obecnosci_admina.php">OBECNOŒCI</a></li>
+                    <li><a href="obecnosci_admina.php">OBECNOï¿½CI</a></li>
                     <li><a href="kalendarz_admina.php">KALENDARZ</a></li>
-                    <li><a href="wiadmosci_admina.php">WIADOMOŒCI</a></li>
+                    <li><a href="wiadmosci_admina.php">WIADOMOï¿½CI</a></li>
                     <li><a href="profile_admina.php">PROFILE</a></li>
                     <li><a href="plany_admina.php">PLANY</a></li>
                 </ul>
@@ -75,24 +75,24 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . '  </span>';
  
 <form action="profile.php" method="post"> 
 login:<br /> 
-<input type="text" name="login" /><br /> 
+<input type="text" name="login_uzytkownika" /><br /> 
 haslo:<br /> 
-<input type="text" name="haslo" /><br /> 
+<input type="text" name="haslo_uzytkownika" /><br /> 
 
 
 <p>Podaj role:</p>
-<input type="radio" name="rola" value="1" />1
-<input type="radio" name="rola" value="2" />2
+<input type="radio" name="rola_uzytkownika" value="1" />1
+<input type="radio" name="rola_uzytkownika" value="2" />2
 <br />
-<input type="radio" name="rodzaj"  value='Uczen'/>Uczen
-<input type="radio" name="rodzaj" value='Nauczyciel'/>Nauczyciel
+<input type="radio" name="rodzaj_uzytkownika"  value='Uczen'/>Uczen
+<input type="radio" name="rodzaj_uzytkownika" value='Nauczyciel'/>Nauczyciel
 <br />
-<input name="imie" />Imie<br /> 
-<input name="nazwisko" />Nazwisko<br />
- <input name="adres" />Adres<br />
-<input name="nrdomu" />Nr domu <br />
- <input name="miasto" />Miasto<br />
- <input name="pesel" />Pesel
+<input name="imie_uzytkownika" />Imie<br /> 
+<input name="nazwisko_uzytkownika" />Nazwisko<br />
+ <input name="adres_uzytkownika" />Adres<br />
+<input name="nrdomu_uzytkownika" />Nr domu <br />
+ <input name="miasto_uzytkownika" />Miasto<br />
+ <input name="pesel_uzytkownika" />Pesel
 <br />
 <input type="submit" value="dodaj" /> 
 </form>
