@@ -12,6 +12,9 @@
 	}
 	else
 	{
+	   
+       
+       
 		$login = $_POST['login'];
 		$haslo = $_POST['haslo'];
         
@@ -31,6 +34,7 @@
                 $wiersz = $rezultat->fetch_assoc();
                 $_SESSION['login']=$wiersz['login'];
                   $_SESSION['haslo']=$wiersz['haslo'];
+                  $_SESSION['id_uzytkownika']=$wiersz['id_uzytkownika'];
 
                 
 				$wiersz2 = $wykonaj->fetch_assoc();
@@ -70,6 +74,7 @@
                 $wiersz = $rezultat->fetch_assoc();
                 $_SESSION['login']=$wiersz['login'];
                   $_SESSION['haslo']=$wiersz['haslo'];
+                $_SESSION['id_uzytkownika']=$wiersz['id_uzytkownika'];
 
                 
 				$wiersz2 = $wykonaj->fetch_assoc();
@@ -104,6 +109,8 @@
             {
                 $wiersz = $rezultat->fetch_assoc();
                 $_SESSION['login']=$wiersz['login'];
+                $_SESSION['id_uzytkownika']=$wiersz['id_uzytkownika'];
+
                 
             	$wiersz2 = $wykonaj->fetch_assoc();
 				$_SESSION['imie']=$wiersz2['imie'];

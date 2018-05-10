@@ -92,8 +92,10 @@ if ($polaczenie->connect_errno!=0)
 }
 else
 {
-    
-     $sql = "SELECT wiad_id FROM wiadomosci where wiad_przeczytane=0 and wiad_do=".$_SESSION["login"]." and wiad_czyj=0";
+ 
+     $sql = "SELECT wiad_id FROM wiadomosci
+INNER JOIN uzytkownicy ON uzytkownicy.id_uzytkownika=wiadomosci.wiad_od
+where wiad_przeczytane=0 and wiad_do=".$_SESSION["id_uzytkownika"]." and wiad_czyj=0";
  
    
       if($rezultat =@$polaczenie->query($sql))
@@ -104,14 +106,13 @@ else
           }
 
 
-echo "<a href='odbiorcza.php'>Skrzynka odbiorcza($rezultat nowych)</a> &bull; <a href='nadawcza.php'>Skrzynka nadawcza</a> &bull; <a href='newmsg.php'>Napisz now¹ wiadomoœæ</a> &bull; <a href='sesje.php?ak=wyl'>Wyloguj</a>";
 
 
+    echo "<a href='odbiorcza.php'>Skrzynka odbiorcza </a> &bull; ".$_SESSION['login']." ";
 
-var_dump($_POST["tresc"]);
 if($_POST["tresc"] && $_POST["do"] && $_POST["temat"]){
    
-    $sql1 ="INSERT INTO wiadomosci SET wiad_id=NULL, wiad_tresc='".$_POST["tresc"]."',wiad_do='".$_POST["do"]."', wiad_przeczytane='0',wiad_data='NOW()', wiad_temat='".$_POST["temat"]."',wiad_czyj='0' ";
+    $sql1 ="INSERT INTO wiadomosci SET wiad_id=NULL, wiad_tresc='".$_POST["tresc"]."',wiad_do='".$_POST["do"]."', wiad_od= ".$_SESSION['login']." , wiad_przeczytane='0',wiad_data='NOW()', wiad_temat='".$_POST["temat"]."',wiad_czyj='0' ";
         $sql2 ="INSERT INTO wiadomosci SET wiad_id=NULL, wiad_tresc='".$_POST["tresc"]."',wiad_do='".$_POST["do"]."', wiad_przeczytane='0',wiad_data='NOW()', wiad_temat='".$_POST["temat"]."',wiad_czyj='1' ";
 $result = $polaczenie->query($sql1);
 $result = $polaczenie->query($sql2);
@@ -137,5 +138,7 @@ echo "<option value=".$rekord["id_uzytkownika"].">".$rekord["login"];
 echo "</select><br>";
 echo "Tresc: <br><textarea name='tresc' rows=8 cols=50></textarea>";
 echo "<br><input type=submit value='wyslij wiadomoœæ' name=submit>";
+
 }
+
 ?>
