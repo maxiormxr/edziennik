@@ -8,7 +8,7 @@ session_start();
 <head>
 
   <title> EDziennik </title>
-<link rel="stylesheet" href="style_oceny.css"/>
+<link rel="stylesheet" href="style.css"/>
  
 </head>
 <body>
@@ -44,7 +44,7 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Uczen </spa
             <li><a href="oceny_ucznia.php">OCENY</a></li>
             <li><a href="obecnosci.php">OBECNOŒCI</a></li>
             <li><a href="kalendarz.php">KALENDARZ</a></li>
-            <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
+            <li><a href="wiadomosci_ucznia.php">WIADOMOŒCI</a></li>
             <li><a href="profile.php">PROFILE</a></li>
             <li><a href="plany_ucznia.php">PLANY</a></li>
         </ul>
@@ -58,7 +58,7 @@ echo '<span style="color: #FFFFF0;"> Witaj ' . $_SESSION['imie'] . ' Uczen </spa
                     <li><a href="oceny_ucznia.php">OCENY</a></li>
                     <li><a href="obecnosci.php">OBECNOŒCI</a></li>
                     <li><a href="kalendarz.php">KALENDARZ</a></li>
-                    <li><a href="wiadmosci.php">WIADOMOŒCI</a></li>
+                    <li><a href="wiadomosci_ucznia.php">WIADOMOŒCI</a></li>
                     <li><a href="profile.php">PROFILE</a></li>
                     <li><a href="plany_ucznia.php">PLANY</a></li>
                 </ul>

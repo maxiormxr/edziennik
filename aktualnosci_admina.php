@@ -7,7 +7,7 @@ session_start();
 <head>
 
   <title> EDziennik </title>
-<link rel="stylesheet" href="stylestrona.css"/>
+<link rel="stylesheet" href="style.css"/>
  
 </head>
 <body>
